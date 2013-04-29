@@ -1,12 +1,42 @@
-/*******************
-plugin styles - full
-*******************/
+/********************************
+* Portrolio Alpha v1.1.1
+	* Plugin description to go here
+	* URL to go here
+	*
+	* Copyright 2013, Tony Barnes
+	* http://tonybarnes.me
+	* Free license stuff to go here
+  ********************************
+  plugin styles - full
+**********************************/
 
 /*stream*/
 #streamWrapper {
 	display:inline-block;
 	position:relative;
 }
+
+/*columns*/
+	/*2col*/
+	#streamWrapper div.col2 div.item {
+		width:49.360%;
+		margin:0.32%;
+	}
+	/*3col*/
+	#streamWrapper div.col3 div.item {
+		width:32.673%;
+		margin:0.32%;
+	}
+	
+	/*6col*/
+	#streamWrapper div.col6 div.item {
+		width:16.0270%; /*tbc*/
+		margin:0.32%; /*tbc*/
+	}
+	#streamWrapper div.hovered {
+		position:relative;
+		z-index:100;
+	}
 
 /*stream item*/
 #streamWrapper div.item {
@@ -25,27 +55,6 @@ plugin styles - full
 	width:100%;
 }
 
-/*columns*/
-/*2col*/
-#streamWrapper div.col2 div.item {
-	width:49.360%;
-	margin:0.32%;
-}
-/*3col*/
-#streamWrapper div.col3 div.item {
-	width:32.673%;
-	margin:0.32%;
-}
-
-/*6col*/
-#streamWrapper div.col6 div.item {
-	width:16.0270%; /*tbc*/
-	margin:0.32%; /*tbc*/
-}
-#streamWrapper div.hovered {
-	position:relative;
-	z-index:100;
-}
 /*item hover*/
 #streamWrapper div.dimActive div.hovered {
 	opacity:100;
@@ -81,15 +90,16 @@ plugin styles - full
 	transition: all 0.3s ease-in-out;
 }
 
+/*tooltip slideIn*/
 #streamWrapper .toolTipSlideIn .toolTip {
 	bottom:-25px;
 }
 
-
-/*item/toolTip bg and title*/
+/*tooltip bg and title*/
 #streamWrapper div.item span.title {
 	display:none;
 }
+
 #streamWrapper div.item .toolTip .bg,
 #streamWrapper div.item .toolTip span.title {
 	display:block;
@@ -113,65 +123,67 @@ plugin styles - full
 #streamWrapper div.item .toolTipFixedBtm .toolTip {
   position:fixed;
 }
+
 #streamWrapper div.item .toolTipFixedBtm .toolTip span.bg {
 	min-height:35px;
 }
+
 #streamWrapper div.item .toolTipFixedBtm .toolTip span.title {
   bottom:8px;	
 	padding:0 10px;
 }
 
 /*colour schemes*/
-/*light blue*/
-#streamWrapper .clrSchemeLightBlue div.item .toolTip span.bg {
-	background:#7DB9E8;
-}
-
-#streamWrapper .clrSchemeLightBlue div.item .toolTip  span.title {
-	color:#FFF;
-	text-shadow:0 2px 2px #333;
-}
-
-/*dark blue*/
-#streamWrapper .clrSchemeDarkBlue div.item .toolTip span.bg {
-	background:#0a3950;
-}
-
-#streamWrapper .clrSchemeDarkBlue div.item .toolTip  span.title {
-	color:#FFF;
-	text-shadow:0 2px 2px #333;
-}
-
-/*black*/
-#streamWrapper .clrSchemeBlack div.item .toolTip span.bg {
-	background:#333;
-}
-
-#streamWrapper .clrSchemeBlack div.item .toolTip  span.title {
-	color:#FFF;
-	text-shadow:0 2px 2px #333;
-}
-
-/*white*/
-#streamWrapper .clrSchemeWhite div.item .toolTip span.bg {
-	background:#F3F3F3;
-	opacity:0.90;
-}
-
-#streamWrapper .clrSchemeWhite div.item .toolTip  span.title {
-	color:#222;
-	text-shadow:0 2px 2px #CCC;
-}
-
-/*grey*/
-#streamWrapper .clrSchemeGrey div.item .toolTip span.bg {
-	background:#666;
-}
-
-#streamWrapper .clrSchemeGrey div.item .toolTip  span.title {
-	color:#F3F3F3;
-	text-shadow:0 2px 2px #000;
-}
+	/*light blue*/
+	#streamWrapper .clrSchemeLightBlue div.item .toolTip span.bg {
+		background:#7DB9E8;
+	}
+	
+	#streamWrapper .clrSchemeLightBlue div.item .toolTip  span.title {
+		color:#FFF;
+		text-shadow:0 2px 2px #333;
+	}
+	
+	/*dark blue*/
+	#streamWrapper .clrSchemeDarkBlue div.item .toolTip span.bg {
+		background:#0a3950;
+	}
+	
+	#streamWrapper .clrSchemeDarkBlue div.item .toolTip  span.title {
+		color:#FFF;
+		text-shadow:0 2px 2px #333;
+	}
+	
+	/*black*/
+	#streamWrapper .clrSchemeBlack div.item .toolTip span.bg {
+		background:#333;
+	}
+	
+	#streamWrapper .clrSchemeBlack div.item .toolTip  span.title {
+		color:#FFF;
+		text-shadow:0 2px 2px #333;
+	}
+	
+	/*white*/
+	#streamWrapper .clrSchemeWhite div.item .toolTip span.bg {
+		background:#F3F3F3;
+		opacity:0.90;
+	}
+	
+	#streamWrapper .clrSchemeWhite div.item .toolTip  span.title {
+		color:#222;
+		text-shadow:0 2px 2px #CCC;
+	}
+	
+	/*grey*/
+	#streamWrapper .clrSchemeGrey div.item .toolTip span.bg {
+		background:#666;
+	}
+	
+	#streamWrapper .clrSchemeGrey div.item .toolTip  span.title {
+		color:#F3F3F3;
+		text-shadow:0 2px 2px #000;
+	}
 
 /*overlay*/
 #streamWrapper div.overlay {
@@ -217,8 +229,6 @@ plugin styles - full
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#1e5799',GradientType=0 );
 }	
 
-
-
 /*********
 responsive
 **********/
@@ -228,26 +238,24 @@ responsive
 	}
 }
 
-
 @media (max-width: 768px) {
 	/*columns*/
-	/*2col*/
-	#streamWrapper div.col2 div.item {
-		float:none;
-		width:97%;
-	  margin:1.7% auto;
-	}
-	/*3col*/
-	#streamWrapper div.col3 div.item {
-		width:49.360%;
-	}
-	/*6col*/
-	#streamWrapper div.col6 div.item {
-		width:24.3622%; /*finalised in chrome...*/
-	}
+		/*2col*/
+		#streamWrapper div.col2 div.item {
+			float:none;
+			width:97%;
+			margin:1.7% auto;
+		}
+		/*3col*/
+		#streamWrapper div.col3 div.item {
+			width:49.360%;
+		}
+		/*6col*/
+		#streamWrapper div.col6 div.item {
+			width:24.3622%; /*finalised in chrome...*/
+		}
 	
 }
-
 
 @media (max-width: 480px) {
 	.stream div.overlay,
@@ -272,19 +280,19 @@ responsive
 	}
 
 	/*columns*/
-	/*2col*/
-	#streamWrapper div.col2 div.item {
-		width:100%;
-		margin:0 0 1% 0;
-	}
-	/*3col*/
-	#streamWrapper div.col3 div.item {
-		width:100%;
-		margin:0;
-	}
-	/*6col*/
-	#streamWrapper div.col6 div.item {
-		width:49.360%; /*finalised in chrome...*/
-	}
+		/*2col*/
+		#streamWrapper div.col2 div.item {
+			width:100%;
+			margin:0 0 1% 0;
+		}
+		/*3col*/
+		#streamWrapper div.col3 div.item {
+			width:100%;
+			margin:0;
+		}
+		/*6col*/
+		#streamWrapper div.col6 div.item {
+			width:49.360%; /*finalised in chrome...*/
+		}
 	
 }
