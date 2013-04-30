@@ -271,7 +271,9 @@ responsive
 	
 	#streamWrapper div.item img {
 		height:auto;
-		width:100%;
+		width: auto;
+		position: relative;
+		margin: 0 auto;
 	}
 
 	/*overlay*/

@@ -41,15 +41,15 @@
 				  }
 			}, options);
 			
-			
 			return this.each(function(){
 				
 				//private settings/vars
 				var $parentElm = $(this).children('div.streamInnerWrapper'); //parent element
 				var $elm = $parentElm.children('div.item'); //individual items
-				var $elmImg = $elm.children('img'); //item img
+				var $elmImg = $elm.children('img')[0]; //item img
+				var elmImgMaxHeight = $('img').height(); //img height
 				$(this).Portrolio('enquireMediaQs');  //call enquireMediaQs method
-			  
+				
 				//column layout				
 				var $columnsAllowed = [2, 3, 6]; //allowed columns
 				if (defaultSettings.columnsDiy == false) {	
@@ -115,7 +115,6 @@
 						}
 					}
 				 
- 				
 				  //active/hover states
 					function activeHoverStates() { //items active/hover/dim states
 						$elm.each(function() {
@@ -201,53 +200,68 @@
 						});
 					}
 				
-				var $overlayTop = $('<div class="overlay overlayTop"/>', { //create overlay top, set height
-					id: 'streamOverlayTop'
-				}).insertBefore($parentElm.children(':eq(0)'));
-				var $overlayBtm = $('<div class="overlay overlayBtm"/>', { //create overlay btm, set height
-					id: 'streamOverlayBtm'
-				}).appendTo($parentElm);
+					var $overlayTop = $('<div class="overlay overlayTop"/>', { //create overlay top, set height
+						id: 'streamOverlayTop'
+					}).insertBefore($parentElm.children(':eq(0)'));
+					var $overlayBtm = $('<div class="overlay overlayBtm"/>', { //create overlay btm, set height
+						id: 'streamOverlayBtm'
+					}).appendTo($parentElm);
+					var $overlays = $('div.overlay'); //get overlays
 					
-				function itemHeightCalc(){ //item/overlay height calc
-					var	windowHeight = $(window).height(); //window height
-					
-					if (defaultSettings.columnsNo == 2){ //2 columns
-						var col2HeightCalc = windowHeight * 0.477; //do calc
-						var overlayTop = 'div.overlayTop'; //get overlay
-						$overlayTop.height(col2HeightCalc); //set heights
-						$overlayBtm.height(col2HeightCalc); 
-					  $elmImg.height(col2HeightCalc);
+					function itemHeightCalc(){ //item/overlay height calc
+						var	windowHeight = $(window).height(); //window height
+						var $elmImg = $('img'); //img (quickfix)
+						
+						if (defaultSettings.columnsNo == 2){ //2 columns
+							var col2HeightCalc = windowHeight * 0.477; //do calc
+							var overlayTop = 'div.overlayTop'; //get overlay
+							$($overlays).css({  //set heights
+								'height': col2HeightCalc,
+								'max-height': elmImgMaxHeight
+							});
+							$($elmImg).css({  //set heights
+								'height': col2HeightCalc,
+								'max-height': elmImgMaxHeight
+							});
+						}
+						
+						else if (defaultSettings.columnsNo == 3){ //3 columns
+							var col3HeightCalc = windowHeight * 0.333; //do calc
+							$($overlays).css({  //set heights
+								'height': col3HeightCalc,
+								'max-height': elmImgMaxHeight
+							});
+							$($elmImg).css({  //set heights
+								'height': col3HeightCalc,
+								'max-height': elmImgMaxHeight
+							});
+						}
+						
+						else if (defaultSettings.columnsNo == 6){ //6 columns
+							var col6HeightCalc = windowHeight * 0.161; //do calc
+							$($overlays).css({  //set heights
+								'height': col6HeightCalc,
+								'max-height': elmImgMaxHeight
+							});
+							$($elmImg).css({  //set heights
+								'height': col6HeightCalc,
+								'max-height': elmImgMaxHeight
+							});
+						}
+					}
+					function itemHeightCalcReset(){ //item/overlay height calc reset
+						$($overlays).height('auto');
+						$($elmImg).height('auto');
+						//$overlayBtm.height('auto');
+						//$elmImg.height('auto');
 					}
 					
-					else if (defaultSettings.columnsNo == 3){ //3 columns
-						var col3HeightCalc = windowHeight * 0.333; //do calc
-						var overlayTop = 'div.overlayTop'; //get overlay
-						$overlayTop.height(col3HeightCalc); //set heights
-						$overlayBtm.height(col3HeightCalc);
-					  $elmImg.height(col3HeightCalc);
-					}
-					
-					else if (defaultSettings.columnsNo == 6){ //6 columns
-						var col6HeightCalc = windowHeight * 0.161; //do calc
-						var overlayTop = 'div.overlayTop'; //get overlay
-						$overlayTop.height(col6HeightCalc); //set heights
-						$overlayBtm.height(col6HeightCalc);
-					  $elmImg.height(col6HeightCalc);
-					}
-				}
-				function itemHeightCalcReset(){ //item/overlay height calc reset
-					$overlayTop.height('auto');
-					$overlayBtm.height('auto');
-					$elmImg.height('auto');
-				}
+					//enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom dynamic
+					function enquireMediaDynamic() {
 				
+						//tb
+						//probably running becuase it's in the INIT. (runs on doc ready automatically).
 				
-				//enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/)
-			  function enquireMedia() {
-			
-			    //tb
-			    //probably running becuase it's in the INIT. (runs on doc ready automatically).
-			
 					 enquire.register("screen and (min-width:768px)", { //min-width 768px;
 					  
 						 match : function() {
@@ -332,10 +346,10 @@
 					 }).listen();
 					
 				 }
-				 enquireMedia();
-			
+				 enquireMediaDynamic();
+				 
 				 $(window).resize(function() {	//window resize
-					 enquireMedia(); //enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/)
+					 enquireMediaDynamic(); //enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom dynamic
 				 });
 				 
 		  });	
