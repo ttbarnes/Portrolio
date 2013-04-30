@@ -185,18 +185,23 @@
 						});
 					} //tooltip - activeHoverToolTip end
 					
-					function activeHoverToolTipFixedBtm() {
-						//$(toolTipSpanTitleShit.$toolTip).addClass('toolTipFixedBtm');
+					function activeHoverToolTipFixedBtm() { //tooltip fixed bottom
 						$parentElm.addClass('toolTipFixedBtm');
 					}
 					
+					function activeHoverToolTipReset() { //tooltip reset
+						$('div.toolTip').remove();
+						$('span.title').remove();
+					}
+					
 				  function activeHoverStatesReset() { //items active/hover states reset - remove classes
-						$elm.removeClass('active, hovered');
-						$elm.hover(function(e){ //hover/mouseOver
-							$elm.removeClass('active', 'hovered');
+						$($elm).removeClass('active, hovered'); //remove classes
+					  $($parentElm).removeClass('dimActive');
+						$($elm).hover(function(e){ //hover/mouseOver
+							$($elm).removeClass('active', 'hovered');
 						},
 						function(e){ //mouseOut
-							$elm.removeClass('active', 'hovered');
+							$($elm).removeClass('active', 'hovered');
 						});
 					}
 				
@@ -327,6 +332,8 @@
 						 match : function() {
 							 //console.log("handler max-width 768px");
 							 activeHoverStatesReset(); //items active/hover states reset
+							 //activeHoverStatesDimReset();
+							 activeHoverToolTipReset(); //tooltip reset
 					 	 }
 				
 					 }).register("screen and (min-width:480px)", { //min-width 480px;
