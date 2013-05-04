@@ -77,29 +77,10 @@
     <script type="text/javascript" src="js/portrolio.alpha.1.1.1.js"></script>
     <script type="text/javascript">
     $(document).ready(function(e) {
-      //options
-      $('#streamWrapper').Portrolio({
-				//selectors (for dynamic vertical overlay positioning & prevent overlap)
-				//selectors.header: 'div.header', //header
-				//selectors.footer: 'div.footer'  //footer
-        columnsNo:3, //set no. of columns (2,3,6,X,Y,Z.......)
-        //columnsDiy:true
-				//activeHoverStatesAll:true,
-				//activeHoverStates: { //remove this completely to have the full set, or declare 'activeHoverStatesAll' below
-			  //activeHoverDim:false //active hover dim (true/false)
-					//activeHoverToolTipTitles:true //tooltip titles?
-					//activeHoverToolTipFixedBtm:true //tooltip fixed at the bottom
-				  //activeHoverToolTipSlide:false //tooltip titles slide in
-				//},
-				clrScheme: { //color scheme (affects vertical overlay and hover titles (lightBlue is default))
-					darkBlue:true //darkBlue
-					//lightBlue:true //lightBlue
-					//black:true //black
-					//white:true //white
-					//grey:true //grey
-					//none:true //none (vertical overlay will revert to black)
-				}, 
-				//colorSchemes:false //cancel color scheme
+      $('#streamWrapper').Portrolio({				
+				columnsNo:3,
+				activeHoverStatesAll:true,
+				clrScheme: {darkBlue:true}
       });
     });
     </script>

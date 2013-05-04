@@ -31,11 +31,11 @@
 					//activeHoverToolTipFixedBtm: false //toolTip  fixed at the bottom
 					//activeHoverToolTipSlide:true //toolTip titles slide in
 				},
-				selectors: {
+				pageSelectors: {
 					header: 'div.header',
 					footer: 'div.footer' 
 				},
-				colorScheme: true, //color schemes
+				clrSchemes: true, //color schemes
 				  clrScheme: { 
 						lightBlue:true //lightBlue (lightBlue, darkBlue, black, white, grey)
 				  }
@@ -189,7 +189,7 @@
 				var $overlays = $('div.overlay'); //get overlays
 				
 				//color schemes
-				if (defaultSettings.colorScheme == true) {
+				if (defaultSettings.clrSchemes == true) {
 				  if (defaultSettings.clrScheme.lightBlue == true){ //light blue
 						$parentElm.addClass('clrSchemeLightBlue');
 						}
@@ -225,19 +225,16 @@
 				}
 				
 				else if (defaultSettings.activeHoverStatesAll ==  false) { //activeHover false
-					 //do nothing(?)
-					 console.log('activeHoverStates shit should be gone')
+					 //do nothing?
 				}
 				
 				if (defaultSettings.activeHoverStates.activeHoverDim == true) { //activeHoverDim
-					console.log('dimming should be ACTIVE')
 					 activeHoverStates();
 					 activeHoverStatesDim();
 					 //activeHoverStates(); //activeHover dim stuff
 				}
 				else if (defaultSettings.activeHoverStates.activeHoverDim == false) { //activeHoverDim false
 					//do nothing?
-					 console.log('activeHoverDim shit should be gone')
 				}
 				else {
 					activeHoverStatesDim();
