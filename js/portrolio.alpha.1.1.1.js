@@ -48,7 +48,6 @@
 				var $elm = $parentElm.children('div.item'); //individual items
 				var $elmImg = $elm.children('img')[0]; //item img
 				var elmImgMaxHeight = $('img').height(); //img height
-				$(this).Portrolio('enquireMediaQs');  //call enquireMediaQs method
 				
 				//column layout				
 				var $columnsAllowed = [2, 3, 6]; //allowed columns
@@ -304,11 +303,7 @@
 					
 				 
 		  });	
-		},
-	 enquireMediaQs : function( options ) { //don't actually need this - leave as example.
-			return this.each(function(){
-			});
-	 }
+		}
 };
 
   $.fn.Portrolio = function( method ) {
