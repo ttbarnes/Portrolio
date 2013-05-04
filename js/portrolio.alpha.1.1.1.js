@@ -261,103 +261,47 @@
 						//$elmImg.height('auto');
 					}
 					
-					//enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom dynamic
-					function enquireMediaDynamic() {
-				
-						//tb
-						//probably running becuase it's in the INIT. (runs on doc ready automatically).
-				
-					 enquire.register("screen and (min-width:768px)", { //min-width 768px;
-					  
-						 match : function() {
-							 
-							 
-							//if we don't have the height auto attr, load another function.. :)
-							/*
-							$overlay123 = $('.overlayTop');
-							 if(base.$overlay123.attr('style').indexOf('height') !== -1) {
-								 $(this).addClass('height - huzzah!');
-							 }
-							 */
-							 //console.log("handler min-width 768px");
-							 itemHeightCalcReset(); //overlays height reset
-							 
-							 //items active/hover states - there are probably better ways of doing this.
-								if (defaultSettings.activeHoverStatesAll ==  true) {
-									 activeHoverStates();
-									 //activeHoverStatesDim();
-									 activeHoverToolTip();
-								}
-								
-								if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) {
-									 activeHoverToolTip(); //toolTip titles only
-								}
-							 
-								if (defaultSettings.activeHoverStates.activeHoverToolTipFixedBtm == true) {
-									 activeHoverToolTipFixedBtm(); //toolTip fixed bottom
-								}
-								
-								else if (defaultSettings.activeHoverStatesAll ==  false) {
-									 //do nothing(?)
-									 console.log('activeHoverStates shit should be gone')
-								}
-								
-								//activeHoverDim
-								if (defaultSettings.activeHoverStates.activeHoverDim == true) {
-									console.log('dimming shou8ld be ACTIVE')
-									 activeHoverStates();
-									 activeHoverStatesDim();
-									 //activeHoverStates(); //activeHover dim stuff
-								}
-								else if (defaultSettings.activeHoverStates.activeHoverDim == false) {
-									//do nothing?
-									console.log('ACTIVE HOVER DIM STUFF SHOULD NOT BE ACTIVE')
-								}
-								else {
-									activeHoverStatesDim();
-								}
-								
-								//activeHoverTitles
-								if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) {
-									 activeHoverToolTip(); //tooltip title stuff
-								}
-								else if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == false) {
-									//do nothing
-								}
-								
-						 }
-				
-					 }).register("screen and (max-width:768px)", { //min-width 768px;
+					//options init
+					if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
+						 activeHoverStates();
+						 //activeHoverStatesDim();
+						 activeHoverToolTip();
+					}
 					
-						 match : function() {
-							 //console.log("handler max-width 768px");
-							 activeHoverStatesReset(); //items active/hover states reset
-							 //activeHoverStatesDimReset();
-							 activeHoverToolTipReset(); //tooltip reset
-					 	 }
-				
-					 }).register("screen and (min-width:480px)", { //min-width 480px;
-					
-						 match : function() {
-							//console.log("handler min-width 480px");
-							 itemHeightCalcReset(); //item height reset
-					 	 }
-				
-					 }).register("screen and (max-width:480px)", { //max-width 480px;
-				
-						 match : function() {
-							 //console.log("handler max-width 480px");
-							 itemHeightCalc(); //item height calc
-						 }
-				
-					 }).listen();
-					
-				 }
-				 enquireMediaDynamic();
+					if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHover tooltip titles
+						 activeHoverToolTip(); //toolTip titles only
+					}
 				 
-				 $(window).resize(function() {	//window resize
-					 enquireMediaDynamic(); //enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom dynamic
-				 });
+					if (defaultSettings.activeHoverStates.activeHoverToolTipFixedBtm == true) { //activeHover fixed btm
+						 activeHoverToolTipFixedBtm(); //toolTip fixed bottom
+					}
+					
+					else if (defaultSettings.activeHoverStatesAll ==  false) { //activeHover false
+						 //do nothing(?)
+						 console.log('activeHoverStates shit should be gone')
+					}
+					
+					if (defaultSettings.activeHoverStates.activeHoverDim == true) { //activeHoverDim
+						console.log('dimming shou8ld be ACTIVE')
+						 activeHoverStates();
+						 activeHoverStatesDim();
+						 //activeHoverStates(); //activeHover dim stuff
+					}
+					else if (defaultSettings.activeHoverStates.activeHoverDim == false) { //activeHoverDim false
+						//do nothing?
+						console.log('ACTIVE HOVER DIM STUFF SHOULD NOT BE ACTIVE')
+					}
+					else {
+						activeHoverStatesDim();
+					}
+					
+					if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHoverTitles
+						 activeHoverToolTip(); //tooltip title stuff
+					}
+					else if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == false) {
+						//do nothing
+					}
+					
 				 
 		  });	
 		},
