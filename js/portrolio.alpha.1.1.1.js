@@ -50,11 +50,12 @@
 				var elmImgMaxHeight = $('img').height(); //img height
 				
 				//column layout				
-				var $columnsAllowed = [2, 3, 6]; //allowed columns
+				var $columnsAllowed = [2, 3, 6], //allowed columns
+				  i = $columnsAllowed;
 				if (defaultSettings.columnsDiy == false) {	
 					var columsNoResult = defaultSettings.columnsNo; //get columns no/value
 					//for(var i = 0; i < columnsAllowed.length; i++){ 
-							if (defaultSettings.columnsNo == 2, 3, 6) { //need to figure out how to test this from the var instead of hard coded.
+							if (defaultSettings.columsNoResult == $columnsAllowed[i]) { //need to figure out how to test this from the var instead of hard coded.
 							
 								if (defaultSettings.columnsNo == 2){ //2 columns
 									$parentElm.addClass('col2');
@@ -66,21 +67,18 @@
 									$parentElm.addClass('col6');
 								}
 								else {
-									console.log('something wrong')
+									console.log('error - please enter 2, 3 or 6 columns') //error
+									$parentElm.hide();
 								}
 							}
-						
-							//else if ( defaultSettings.columnsNo !== (columnsAllowed[i])){						
 							else {
 								console.log('error - please enter 2, 3 or 6 columns') //error
+									$parentElm.hide();
 							}
-					//}
-					
-						}
-						
-					else if (defaultSettings.columnsDiy == true){
-						console.log('columnsDiy active - no columns calculations') //error
-					}
+						}					
+						//else if (defaultSettings.columnsDiy == true){
+						//	console.log('columnsDiy active - no columns calculations')
+						//}
 				
 				//image resizing (and potential for popup) to go here - something like...
 				//get image src, store for the A HREF 
@@ -92,7 +90,7 @@
 				//thumbs in the popup? - prob no (mobile first?)
 				//some fancy animation options or something?
 				
-				//color schemes - ADD TO ENQUIRE-JS, IF BIG SCREEN...
+				//color schemes
 				if (defaultSettings.colorScheme == true) {
 				  if (defaultSettings.clrScheme.lightBlue == true){ //light blue
 						$parentElm.addClass('clrSchemeLightBlue');
@@ -256,14 +254,11 @@
 					function itemHeightCalcReset(){ //item/overlay height calc reset
 						$($overlays).height('auto');
 						$($elmImg).height('auto');
-						//$overlayBtm.height('auto');
-						//$elmImg.height('auto');
 					}
 					
 					//options init
 					if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
 						 activeHoverStates();
-						 //activeHoverStatesDim();
 						 activeHoverToolTip();
 					}
 					
@@ -281,14 +276,14 @@
 					}
 					
 					if (defaultSettings.activeHoverStates.activeHoverDim == true) { //activeHoverDim
-						console.log('dimming shou8ld be ACTIVE')
+						console.log('dimming should be ACTIVE')
 						 activeHoverStates();
 						 activeHoverStatesDim();
 						 //activeHoverStates(); //activeHover dim stuff
 					}
 					else if (defaultSettings.activeHoverStates.activeHoverDim == false) { //activeHoverDim false
 						//do nothing?
-						console.log('ACTIVE HOVER DIM STUFF SHOULD NOT BE ACTIVE')
+						 console.log('activeHoverDim shit should be gone')
 					}
 					else {
 						activeHoverStatesDim();
@@ -301,10 +296,9 @@
 						//do nothing
 					}
 					
-				 
 		  });	
 		}
-};
+	};
 
   $.fn.Portrolio = function( method ) {
     
