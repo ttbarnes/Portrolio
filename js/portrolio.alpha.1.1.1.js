@@ -251,6 +251,7 @@
 				}
 					
 		  });	
+			
 		}
 	};
   $.fn.Portrolio = function( method ) {
