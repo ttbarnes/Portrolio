@@ -15,10 +15,10 @@
 	*
 */
 
-;(function( $ ){
+;(function($){
 	
 	var methods = {
-		init : function( options ) {
+		init : function(options) {
 		
 		  //default settings
 			var defaultSettings = $.extend({ //default,public? settings
@@ -55,30 +55,30 @@
 				if (defaultSettings.columnsDiy == false) {	
 					var columsNoResult = defaultSettings.columnsNo; //get columns no/value
 					//for(var i = 0; i < columnsAllowed.length; i++){ 
-							if (defaultSettings.columsNoResult == $columnsAllowed[i]) { //need to figure out how to test this from the var instead of hard coded.
-							
-								if (defaultSettings.columnsNo == 2){ //2 columns
-									$parentElm.addClass('col2');
-								}
-								else if (defaultSettings.columnsNo == 3){ //3 columns
-									$parentElm.addClass('col3');
-								} 
-								else if (defaultSettings.columnsNo == 6){ //6 columns
-									$parentElm.addClass('col6');
-								}
-								else {
-									console.log('error - please enter 2, 3 or 6 columns') //error
-									$parentElm.hide();
-								}
-							}
-							else {
-								console.log('error - please enter 2, 3 or 6 columns') //error
-									$parentElm.hide();
-							}
-						}					
-						//else if (defaultSettings.columnsDiy == true){
-						//	console.log('columnsDiy active - no columns calculations')
-						//}
+					if (defaultSettings.columsNoResult == $columnsAllowed[i]) { //need to figure out how to test this from the var instead of hard coded.
+					
+						if (defaultSettings.columnsNo == 2){ //2 columns
+							$parentElm.addClass('col2');
+						}
+						else if (defaultSettings.columnsNo == 3){ //3 columns
+							$parentElm.addClass('col3');
+						} 
+						else if (defaultSettings.columnsNo == 6){ //6 columns
+							$parentElm.addClass('col6');
+						}
+						else {
+							console.log('error - please enter 2, 3 or 6 columns') //error
+							$parentElm.hide();
+						}
+					}
+					else {
+						console.log('error - please enter 2, 3 or 6 columns') //error
+							$parentElm.hide();
+					}
+				}					
+				//else if (defaultSettings.columnsDiy == true){
+				//	console.log('columnsDiy active - no columns calculations')
+				//}
 				
 				//image resizing (and potential for popup) to go here - something like...
 				//get image src, store for the A HREF 
@@ -253,19 +253,16 @@
 		  });	
 		}
 	};
-
   $.fn.Portrolio = function( method ) {
-    
-    if ( methods[method] ) {
+    if (methods[method]) {
       return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
-    } else if ( typeof method === 'object' || ! method ) {
+    } 
+		else if ( typeof method === 'object' || ! method ) {
       return methods.init.apply( this, arguments );
-    } else {
-      $.error( 'Error!' );
-    }    
-  
+    } 
+		else {
+      $.error('Error!');
+    } 
   };
-	
 	return this;
-	
-})( jQuery );
+})(jQuery);
