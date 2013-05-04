@@ -89,6 +89,104 @@
 				//resizing/calculations for the responsive popup
 				//thumbs in the popup? - prob no (mobile first?)
 				//some fancy animation options or something?
+			 
+				//active/hover states
+				function activeHoverStates() { //items active/hover/dim states
+					$elm.each(function() {
+						$(this).hover(function(e){ //hover/mouseOver
+							$elm.addClass('active'); //add class
+							var $elmHover = $(this);
+							$($elmHover).addClass('hovered'); //add class			
+						},
+						function(e){ //mouseOut
+							$elm.removeClass('active');
+							$(this).removeClass('hovered');
+						});
+					});
+				} //items active/hover states end
+				
+				function activeHoverStatesDim() { //items active/hover/dim states
+					$parentElm.addClass('dimActive'); //add class
+					$elm.each(function() {
+						$(this).hover(function(e){ //hover/mouseOver
+							$elm.addClass('active'); //add class
+						},
+						function(e){ //mouseOut
+							$elm.removeClass('active');
+						});
+					});
+				}
+				
+				//tooltip
+				function activeHoverToolTip() {
+					$elm.each(function() {
+						
+						if ($(this).find('span.title').length > 0) { //if title exists
+						
+							if (defaultSettings.activeHoverStates.activeHoverToolTipSlide == false) { //if slide setting is false
+								$(this).hover(function(e){ //hover/mouseOver
+									var $elmHover = $(this);
+									var $toolTip = $('<div class="toolTip"><span class="bg"/></div>').appendTo(this); //create toolTip and bg		
+									$($elmHover).children('span.title').appendTo($toolTip); //append title
+									$('div.toolTip').fadeIn(300);
+								},
+								function(e){ //mouseOut
+									//$elm.removeClass('active'); //remove class
+									$('div.toolTip span.title').appendTo(this); //move title back to parent item
+									$('div.toolTip').fadeOut(200).remove(); //remove/reset tooltip
+									$(this).removeClass('hovered'); //remove class
+								});
+							}
+							else { 
+								$(this).hover(function(e){ //hover/mouseOver
+									$parentElm.addClass('toolTipSlideIn'); //add parent class
+									var $elmHover = $(this);
+									var $toolTip = $('<div class="toolTip toolTipSlideIn"><span class="bg"/></div>').appendTo($elmHover); //create toolTip and bg		
+									$($elmHover).children('span.title').appendTo($toolTip); //append title
+									$('div.toolTip').fadeIn(300).css('bottom', '0px');
+								},
+								function(e){ //mouseOut
+									$elm.removeClass('active'); //remove class
+									$('div.toolTip span.title').appendTo(this); //move title back to parent item
+									$('div.toolTip').css('bottom', '-25px').fadeOut(200).remove(); //remove/reset tooltip
+									$(this).removeClass('hovered'); //remove class
+								});
+							}	
+						}
+						else {
+							//do nothing - title doesn't exist
+						}
+						
+					});
+				} //tooltip - activeHoverToolTip end
+				
+				function activeHoverToolTipFixedBtm() { //tooltip fixed bottom
+					$parentElm.addClass('toolTipFixedBtm');
+				}
+				
+				function activeHoverToolTipReset() { //tooltip reset
+					$('div.toolTip').remove();
+					$('span.title').remove();
+				}
+				
+				function activeHoverStatesReset() { //items active/hover states reset - remove classes
+					$($elm).removeClass('active, hovered'); //remove classes
+					$($parentElm).removeClass('dimActive');
+					$($elm).hover(function(e){ //hover/mouseOver
+						$($elm).removeClass('active', 'hovered');
+					},
+					function(e){ //mouseOut
+						$($elm).removeClass('active', 'hovered');
+					});
+				}
+			
+				var $overlayTop = $('<div class="overlay overlayTop"/>', { //create overlay top, set height
+					id: 'streamOverlayTop'
+				}).insertBefore($parentElm.children(':eq(0)'));
+				var $overlayBtm = $('<div class="overlay overlayBtm"/>', { //create overlay btm, set height
+					id: 'streamOverlayBtm'
+				}).appendTo($parentElm);
+				var $overlays = $('div.overlay'); //get overlays
 				
 				//color schemes
 				if (defaultSettings.colorScheme == true) {
@@ -111,144 +209,46 @@
 							$parentElm.addClass('clrSchemeNone');
 						}
 					}
-				 
-				  //active/hover states
-					function activeHoverStates() { //items active/hover/dim states
-						$elm.each(function() {
-							$(this).hover(function(e){ //hover/mouseOver
-								$elm.addClass('active'); //add class
-								var $elmHover = $(this);
-								$($elmHover).addClass('hovered'); //add class			
-							},
-							function(e){ //mouseOut
-								$elm.removeClass('active');
-								$(this).removeClass('hovered');
-							});
-						});
-			    } //items active/hover states end
 					
-					function activeHoverStatesDim() { //items active/hover/dim states
-					  $parentElm.addClass('dimActive'); //add class
-					  $elm.each(function() {
-							$(this).hover(function(e){ //hover/mouseOver
-								$elm.addClass('active'); //add class
-							},
-							function(e){ //mouseOut
-								$elm.removeClass('active');
-							});
-						});
-					}
-					
-					//tooltip
-					function activeHoverToolTip() {
-						$elm.each(function() {
-							
-						  if ($(this).find('span.title').length > 0) { //if title exists
-							
-								if (defaultSettings.activeHoverStates.activeHoverToolTipSlide == false) { //if slide setting is false
-									$(this).hover(function(e){ //hover/mouseOver
-										var $elmHover = $(this);
-										var $toolTip = $('<div class="toolTip"><span class="bg"/></div>').appendTo(this); //create toolTip and bg		
-										$($elmHover).children('span.title').appendTo($toolTip); //append title
-										$('div.toolTip').fadeIn(300);
-									},
-									function(e){ //mouseOut
-										//$elm.removeClass('active'); //remove class
-										$('div.toolTip span.title').appendTo(this); //move title back to parent item
-										$('div.toolTip').fadeOut(200).remove(); //remove/reset tooltip
-										$(this).removeClass('hovered'); //remove class
-									});
-								}
-								else { 
-									$(this).hover(function(e){ //hover/mouseOver
-									  $parentElm.addClass('toolTipSlideIn'); //add parent class
-										var $elmHover = $(this);
-										var $toolTip = $('<div class="toolTip toolTipSlideIn"><span class="bg"/></div>').appendTo($elmHover); //create toolTip and bg		
-										$($elmHover).children('span.title').appendTo($toolTip); //append title
-										$('div.toolTip').fadeIn(300).css('bottom', '0px');
-									},
-									function(e){ //mouseOut
-										$elm.removeClass('active'); //remove class
-										$('div.toolTip span.title').appendTo(this); //move title back to parent item
-										$('div.toolTip').css('bottom', '-25px').fadeOut(200).remove(); //remove/reset tooltip
-										$(this).removeClass('hovered'); //remove class
-									});
-								}	
-							}
-							else {
-								//do nothing - title doesn't exist
-						  }
-							
-						});
-					} //tooltip - activeHoverToolTip end
-					
-					function activeHoverToolTipFixedBtm() { //tooltip fixed bottom
-						$parentElm.addClass('toolTipFixedBtm');
-					}
-					
-					function activeHoverToolTipReset() { //tooltip reset
-						$('div.toolTip').remove();
-						$('span.title').remove();
-					}
-					
-				  function activeHoverStatesReset() { //items active/hover states reset - remove classes
-						$($elm).removeClass('active, hovered'); //remove classes
-					  $($parentElm).removeClass('dimActive');
-						$($elm).hover(function(e){ //hover/mouseOver
-							$($elm).removeClass('active', 'hovered');
-						},
-						function(e){ //mouseOut
-							$($elm).removeClass('active', 'hovered');
-						});
-					}
+				//options init
+				if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
+					 activeHoverStates();
+					 activeHoverToolTip();
+				}
 				
-					var $overlayTop = $('<div class="overlay overlayTop"/>', { //create overlay top, set height
-						id: 'streamOverlayTop'
-					}).insertBefore($parentElm.children(':eq(0)'));
-					var $overlayBtm = $('<div class="overlay overlayBtm"/>', { //create overlay btm, set height
-						id: 'streamOverlayBtm'
-					}).appendTo($parentElm);
-					var $overlays = $('div.overlay'); //get overlays
-					
-					//options init
-					if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
-						 activeHoverStates();
-						 activeHoverToolTip();
-					}
-					
-					if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHover tooltip titles
-						 activeHoverToolTip(); //toolTip titles only
-					}
-				 
-					if (defaultSettings.activeHoverStates.activeHoverToolTipFixedBtm == true) { //activeHover fixed btm
-						 activeHoverToolTipFixedBtm(); //toolTip fixed bottom
-					}
-					
-					else if (defaultSettings.activeHoverStatesAll ==  false) { //activeHover false
-						 //do nothing(?)
-						 console.log('activeHoverStates shit should be gone')
-					}
-					
-					if (defaultSettings.activeHoverStates.activeHoverDim == true) { //activeHoverDim
-						console.log('dimming should be ACTIVE')
-						 activeHoverStates();
-						 activeHoverStatesDim();
-						 //activeHoverStates(); //activeHover dim stuff
-					}
-					else if (defaultSettings.activeHoverStates.activeHoverDim == false) { //activeHoverDim false
-						//do nothing?
-						 console.log('activeHoverDim shit should be gone')
-					}
-					else {
-						activeHoverStatesDim();
-					}
-					
-					if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHoverTitles
-						 activeHoverToolTip(); //tooltip title stuff
-					}
-					else if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == false) {
-						//do nothing
-					}
+				if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHover tooltip titles
+					 activeHoverToolTip(); //toolTip titles only
+				}
+			 
+				if (defaultSettings.activeHoverStates.activeHoverToolTipFixedBtm == true) { //activeHover fixed btm
+					 activeHoverToolTipFixedBtm(); //toolTip fixed bottom
+				}
+				
+				else if (defaultSettings.activeHoverStatesAll ==  false) { //activeHover false
+					 //do nothing(?)
+					 console.log('activeHoverStates shit should be gone')
+				}
+				
+				if (defaultSettings.activeHoverStates.activeHoverDim == true) { //activeHoverDim
+					console.log('dimming should be ACTIVE')
+					 activeHoverStates();
+					 activeHoverStatesDim();
+					 //activeHoverStates(); //activeHover dim stuff
+				}
+				else if (defaultSettings.activeHoverStates.activeHoverDim == false) { //activeHoverDim false
+					//do nothing?
+					 console.log('activeHoverDim shit should be gone')
+				}
+				else {
+					activeHoverStatesDim();
+				}
+				
+				if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHoverTitles
+					 activeHoverToolTip(); //tooltip title stuff
+				}
+				else if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == false) {
+					//do nothing
+				}
 					
 		  });	
 		}
