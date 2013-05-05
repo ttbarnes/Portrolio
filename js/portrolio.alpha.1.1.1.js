@@ -51,7 +51,7 @@
 				
 				//column layout				
 				var $columnsAllowed = [2, 3, 6], //allowed columns
-				  i = $columnsAllowed;
+				i = $columnsAllowed;
 				if (defaultSettings.columnsDiy == false) {	
 					var columsNoResult = defaultSettings.columnsNo; //get columns no/value
 					//for(var i = 0; i < columnsAllowed.length; i++){ 
@@ -193,23 +193,26 @@
 				  if (defaultSettings.clrScheme.lightBlue == true){ //light blue
 						$parentElm.addClass('clrSchemeLightBlue');
 						}
-						else if (defaultSettings.clrScheme.darkBlue == true){ //dark blue
-							$parentElm.addClass('clrSchemeDarkBlue');
-						}
-						else if (defaultSettings.clrScheme.black == true){ //black
-							$parentElm.addClass('clrSchemeBlack');
-						}
-						else if (defaultSettings.clrScheme.white == true){ //white
-							$parentElm.addClass('clrSchemeWhite');
-						}
-						else if (defaultSettings.clrScheme.grey == true){ //grey
-							$parentElm.addClass('clrSchemeGrey');
-						}
-						else if (defaultSettings.clrScheme.none == true){ //none
-							$parentElm.addClass('clrSchemeNone');
-						}
+					else if (defaultSettings.clrScheme.darkBlue == true){ //dark blue
+						$parentElm.addClass('clrSchemeDarkBlue');
 					}
+					else if (defaultSettings.clrScheme.black == true){ //black
+						$parentElm.addClass('clrSchemeBlack');
+					}
+					else if (defaultSettings.clrScheme.white == true){ //white
+						$parentElm.addClass('clrSchemeWhite');
+					}
+					else if (defaultSettings.clrScheme.grey == true){ //grey
+						$parentElm.addClass('clrSchemeGrey');
+					}
+					else if (defaultSettings.clrScheme.none == true){ //none
+						$parentElm.addClass('clrSchemeNone');
+					}
+				}
 					
+					
+					
+			  
 				//options init
 				if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
 					 activeHoverStates();
@@ -246,6 +249,7 @@
 				else if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == false) {
 					//do nothing
 				}
+				
 					
 		  });	
 			
