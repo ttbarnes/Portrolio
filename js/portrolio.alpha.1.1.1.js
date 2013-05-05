@@ -209,48 +209,85 @@
 						$parentElm.addClass('clrSchemeNone');
 					}
 				}
-					
-					
-					
-			  
-				//options init
-				if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
-					 activeHoverStates();
-					 activeHoverToolTip();
-				}
 				
-				if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHover tooltip titles
-					 activeHoverToolTip(); //toolTip titles only
-				}
-			 
-				if (defaultSettings.activeHoverStates.activeHoverToolTipFixedBtm == true) { //activeHover fixed btm
-					 activeHoverToolTipFixedBtm(); //toolTip fixed bottom
-				}
+				//enquire - make it all dynamic.	
 				
-				else if (defaultSettings.activeHoverStatesAll ==  false) { //activeHover false
-					 //do nothing?
-				}
+				//enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom dynamic
+				function enquireMediaQ() {
 				
-				if (defaultSettings.activeHoverStates.activeHoverDim == true) { //activeHoverDim
-					 activeHoverStates();
-					 activeHoverStatesDim();
-					 //activeHoverStates(); //activeHover dim stuff
-				}
-				else if (defaultSettings.activeHoverStates.activeHoverDim == false) { //activeHoverDim false
-					//do nothing?
-				}
-				else {
-					activeHoverStatesDim();
-				}
+				  enquire.register("screen and (min-width:768px)", {
+					  match : function() {
+						 
+							//options init
+							if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
+								 activeHoverStates();
+								 activeHoverToolTip();
+							}
+							
+							if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHover tooltip titles
+								 activeHoverToolTip(); //toolTip titles only
+							}
+						 
+							if (defaultSettings.activeHoverStates.activeHoverToolTipFixedBtm == true) { //activeHover fixed btm
+								 activeHoverToolTipFixedBtm(); //toolTip fixed bottom
+							}
+							
+							else if (defaultSettings.activeHoverStatesAll ==  false) { //activeHover false
+								 //do nothing?
+							}
+							
+							if (defaultSettings.activeHoverStates.activeHoverDim == true) { //activeHoverDim
+								 activeHoverStates();
+								 activeHoverStatesDim();
+							}
+							else if (defaultSettings.activeHoverStates.activeHoverDim == false) { //activeHoverDim false
+								//do nothing?
+							}
+							else {
+								activeHoverStatesDim();
+							}
+							
+							if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHoverTitles
+								 activeHoverToolTip(); //tooltip title stuff
+							}
+							else if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == false) {
+								//do nothing
+							}
+							 
+					  }
+				 }).register("screen and (max-width:768px)", {
+					 match : function() { 
+						 console.log('MAX-WIDTH:768PX ACTIVE')
+						 
+					 }
 				
-				if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHoverTitles
-					 activeHoverToolTip(); //tooltip title stuff
-				}
-				else if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == false) {
-					//do nothing
-				}
+				 }).register("screen and (min-width:480px)", {
+					 match : function() {
+						 
+					 }
+				 }).register("screen and (max-width:480px)", {
+					 match : function() {
+						 console.log('MAX-WIDTH:480PX ACTIVE')
+						 
+					 }
 				
-					
+				 }).listen();
+				
+				}
+				enquireMediaQ();
+				
+				
+				/*
+				$(window).resize(function() {	//window resize
+				 enquireMediaDynamic(); //enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom dynamic
+				 ////////
+				 ////
+				 // ^ Don't use the exact same function. Possible to create 'minified'/simpler callback and depedancies? EG 'if options X + Y = Z, var I = yes...'?
+				 ////
+				 ////////
+				});
+				*/
+	
 		  });	
 			
 		}
