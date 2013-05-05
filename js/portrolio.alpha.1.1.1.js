@@ -341,13 +341,14 @@
 				     createOvelays(); //create, append overlays
 						 itemHeightCalc(); //item/overlay height calc
 						 overlayInView(); //in view - overlays
+						 
 					 }
 				
 				 }).listen();
 				
 				}
 				enquireMediaQ();
-				
+				 
 		  });	
 			
 		}
