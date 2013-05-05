@@ -49,8 +49,10 @@
 				var elmImgMaxHeight = $('img').height(); //img height
 				
 				//column layout				
-				var $columnsAllowed = [2, 3, 6], //allowed columns
+				var $columnsAllowed = [2, 3, 6]; //allowed columns
+				var $columnsNoResult = defaultSettings.columnsNo; //get columns result
 				i = $columnsAllowed;
+				
 				if (defaultSettings.columnsDiy == false) {	
 					var columsNoResult = defaultSettings.columnsNo; //get columns no/value
 					//for(var i = 0; i < columnsAllowed.length; i++){ 
@@ -303,6 +305,35 @@
 					}
 				}
 				
+				function enqMediaQsmallScreens() { //enquire js for small screens
+							//plan is to change this according to the column setting (eg display 2 or 3 or 6 in the height window)
+							//POC			
+							var	windowHeight = $(window).height(); //window height
+							var $overlays = $('div.overlay'); //get overlays
+							var $elmImg = $('img'); //img (quickfix)	
+							//var fffdsfd = $columnsNoResult
+							//itemHeightCalc(); //item/overlay height calc
+							
+							var heightResult = windowHeight * 0.333; //do calc
+							$('div.overlay').css({  //set heights
+								'height': heightResult,
+								'max-height': heightResult
+							});
+							$('div.item img').css({  //set heights
+								'height': heightResult,
+								'max-height': heightResult
+							});
+							
+					
+				}
+				function enqMediaQsmallScreensActivate () { //enquire js for small screens - activate
+					 //dynamic height calculation
+					 $(window).resize(function() {
+						 enqMediaQsmallScreens(); //enquire js for small screens
+					 });
+				} 
+				
+				
 				//enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom - make it all dynamic.	
 				function enquireMediaQ() {
 				
@@ -327,6 +358,7 @@
 				 }).register("screen and (max-width:768px)", {
 					 match : function() { 
 						 $elm.unbind('mouseenter mouseleave'); //unbind all hover events
+						 var asdfsaf = window.clearInterval(); //stop the timer (work in progess)
 						 $parentElm.removeClass('dimActive'); //remove class
 						 $parentElm.removeClass('toolTipSlideIn'); //remove class
 					 }
@@ -334,6 +366,7 @@
 				 }).register("screen and (min-width:480px)", {
 					 match : function() {
 						 itemHeightCalcReset(); //item/overlay height calc reset
+	   				 var asdfsaf =  window.clearInterval(); //stop the timer (work in progess)
 					 }
 				 }).register("screen and (max-width:480px)", {	
 					 match : function() {
@@ -341,16 +374,15 @@
 				     createOvelays(); //create, append overlays
 						 itemHeightCalc(); //item/overlay height calc
 						 overlayInView(); //in view - overlays
-						 
+						 var timeIt = window.setInterval(enqMediaQsmallScreensActivate, 1000); //timer (work in progress)
 					 }
 				
 				 }).listen();
 				
 				}
 				enquireMediaQ();
-				 
-		  });	
-			
+				
+		  });
 		}
 	};
   $.fn.Portrolio = function( method ) {
