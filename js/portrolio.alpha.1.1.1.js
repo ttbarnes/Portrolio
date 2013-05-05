@@ -25,12 +25,6 @@
 				columnsNo: 3, //no. of colums (3, X, X)
 				columnsDiy: false, //cancel column width calculations
 				activeHoverStatesAll: true, //active hover states (everything), on/off
-				activeHoverStates: {  //active hover state specifics
-					//activeHoverDim: true  //just the dim
-					//activeHoverToolTipTitles: true //hover titles?
-					//activeHoverToolTipFixedBtm: false //toolTip  fixed at the bottom
-					//activeHoverToolTipSlide:true //toolTip titles slide in
-				},
 				pageSelectors: {
 					header: 'div.header',
 					footer: 'div.footer' 
@@ -179,7 +173,7 @@
 						$($elm).removeClass('active', 'hovered');
 					});
 				}
-			  
+				
 				function createOvelays() { //create, append overlays
 				  var $overlayTop = $('<div class="overlay overlayTop"/>', { //create overlay top, set height
 						id: 'streamOverlayTop'
@@ -187,9 +181,59 @@
 					var $overlayBtm = $('<div class="overlay overlayBtm"/>', { //create overlay btm, set height
 						id: 'streamOverlayBtm'
 					}).appendTo($parentElm);	
-					var $overlays = $('div.overlay'); //get overlays
 				}
 				
+				function itemHeightCalc(){ //item/overlay height calc
+					var	windowHeight = $(window).height(); //window height
+					var $overlays = $('div.overlay'); //get overlays
+					var $elmImg = $('img'); //img (quickfix)
+					
+					if (defaultSettings.columnsNo == 2){ //2 columns
+						var col2HeightCalc = windowHeight * 0.477; //do calc
+						var overlayTop = 'div.overlayTop'; //get overlay
+						$($overlays).css({  //set heights
+							'height': col2HeightCalc,
+							'max-height': elmImgMaxHeight
+						});
+						$($elmImg).css({  //set heights
+							'height': col2HeightCalc,
+							'max-height': elmImgMaxHeight
+						});
+					}
+					
+					else if (defaultSettings.columnsNo == 3){ //3 columns
+						var col3HeightCalc = windowHeight * 0.333; //do calc
+						$($overlays).css({  //set heights
+							'height': col3HeightCalc,
+							'max-height': elmImgMaxHeight
+						});
+						$($elmImg).css({  //set heights
+							'height': col3HeightCalc,
+							'max-height': elmImgMaxHeight
+						});
+					}
+					
+					else if (defaultSettings.columnsNo == 6){ //6 columns
+						var col6HeightCalc = windowHeight * 0.161; //do calc
+						$($overlays).css({  //set heights
+							'height': col6HeightCalc,
+							'max-height': elmImgMaxHeight
+						});
+						$($elmImg).css({  //set heights
+							'height': col6HeightCalc,
+							'max-height': elmImgMaxHeight
+						});
+					}
+				}
+				
+				function itemHeightCalcReset(){ //item/overlay height calc reset
+					var $overlays = $('div.overlay');
+					var $elmImg = $('img'); //quickfix
+					$overlays.remove();
+					$elmImg.height('auto');
+				 }
+				 
+
 				//color schemes
 				if (defaultSettings.clrSchemes == true) {
 				  if (defaultSettings.clrScheme.lightBlue == true){ //light blue
@@ -220,7 +264,7 @@
 				  enquire.register("screen and (min-width:768px)", {
 					  match : function() {
 						 
-							//options init
+						  //options init
 							if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
 								 activeHoverStates();
 								 activeHoverToolTip();
@@ -255,21 +299,26 @@
 							else if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == false) {
 								//do nothing
 							}
-							 
+							
 					  }
 				 }).register("screen and (max-width:768px)", {
 					 match : function() { 
+					 
 						 $elm.unbind('mouseenter mouseleave'); //unbind all hover events
+						 
 					 }
 				
 				 }).register("screen and (min-width:480px)", {
 					 match : function() {
-						 
+						
+						 itemHeightCalcReset(); //item/overlay height calc reset
+ 
 					 }
-				 }).register("screen and (max-width:480px)", {
+				 }).register("screen and (max-width:480px)", {	
 					 match : function() {
 					   console.log('MAX-WIDTH:480PX ACTIVE')
 				     createOvelays(); //create, append overlays
+						 itemHeightCalc(); //item/overlay height calc
 					 }
 				
 				 }).listen();
@@ -277,18 +326,6 @@
 				}
 				enquireMediaQ();
 				
-				
-				/*
-				$(window).resize(function() {	//window resize
-				 enquireMediaDynamic(); //enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom dynamic
-				 ////////
-				 ////
-				 // ^ Don't use the exact same function. Possible to create 'minified'/simpler callback and depedancies? EG 'if options X + Y = Z, var I = yes...'?
-				 ////
-				 ////////
-				});
-				*/
-	
 		  });	
 			
 		}
