@@ -32,7 +32,7 @@
 				},
 				pageSelectors: {
 					header: 'div.header',
-					footer: 'div.footer' 
+					footer: 'div.footer'
 				},
 				clrSchemes: true, //color schemes
 				  clrScheme: { 
@@ -190,6 +190,44 @@
 					}).appendTo($parentElm);	
 				}
 				
+				function overlayInView() {  //in view - overlays
+					
+					//temporary selectors (POC)
+					var $overlayTop = $('div.overlayTop');
+					var $overlayBtm = $('div.overlayBtm');
+					var $header = defaultSettings.pageSelectors.header;
+					var $footer = defaultSettings.pageSelectors.footer;
+					
+					var $elmLast = $($parentElm).find('div.item:last'); //find last item, add class
+					$elmLast.addClass('last');
+					
+					$($header).bind('inview', function(event, visible) { //if header in view
+						if (visible) {
+							$($overlayTop).css({'position': 'absolute', 'top':'0' });
+							$($overlayBtm).css({'position': 'absolute', 'bottom':'0' });
+						} else {
+							$($overlayTop).css({'position': 'fixed', 'top':'0' });
+							$($overlayBtm).css({'position': 'fixed', 'bottom':'0' });
+						}
+					});
+					
+					$($elmLast).bind('inview', function(event, visible) { //if last item in view
+						if (visible) {
+							$($overlayBtm).css({'position': 'absolute', 'bottom':'0' });
+						} else {
+							$($overlayBtm).css({'position': 'fixed', 'bottom':'0' });
+						}
+					});
+					$($footer).bind('inview', function(event, visible) { //if footer in view (this will be the immediate item after #streamWrapper)
+						if (visible) {
+							$($overlayTop).css({'position': 'absolute', 'top':'0' });
+						}
+						else {
+							$($overlayTop).css({'position': 'fixed', 'top':'0' });
+						}
+					});	
+				}	
+				
 				var	windowHeight = $(window).height(); //window height
 				
 				function itemHeightCalc(){ //item/overlay height calc
@@ -343,6 +381,7 @@
 					   $elm.hide().fadeIn(300); //hide and fade in
 				     createOvelays(); //create, append overlays
 						 itemHeightCalc(); //item/overlay height calc
+						 overlayInView(); //in view - overlays
 					 }
 				
 				 }).listen();
