@@ -190,14 +190,13 @@
 					}).appendTo($parentElm);	
 				}
 				
+				var	windowHeight = $(window).height(); //window height
+				
 				function itemHeightCalc(){ //item/overlay height calc
-					var	windowHeight = $(window).height(); //window height
 					var $overlays = $('div.overlay'); //get overlays
-					var $elmImg = $('img'); //img (quickfix)
-					
+					var $elmImg = $('img'); //img (quickfix)	
 					if (defaultSettings.columnsNo == 2){ //2 columns
 						var col2HeightCalc = windowHeight * 0.477; //do calc
-						var overlayTop = 'div.overlayTop'; //get overlay
 						$($overlays).css({  //set heights
 							'height': col2HeightCalc,
 							'max-height': elmImgMaxHeight
@@ -209,6 +208,8 @@
 					}
 					
 					else if (defaultSettings.columnsNo == 3){ //3 columns
+						var $overlays = $('div.overlay'); //get overlays
+						var $elmImg = $('img'); //img (quickfix)	
 						var col3HeightCalc = windowHeight * 0.333; //do calc
 						$($overlays).css({  //set heights
 							'height': col3HeightCalc,
@@ -221,6 +222,8 @@
 					}
 					
 					else if (defaultSettings.columnsNo == 6){ //6 columns
+						var $overlays = $('div.overlay'); //get overlays
+						var $elmImg = $('img'); //img (quickfix)
 						var col6HeightCalc = windowHeight * 0.161; //do calc
 						$($overlays).css({  //set heights
 							'height': col6HeightCalc,
@@ -240,7 +243,6 @@
 					$elmImg.height('auto');
 				 }
 				 
-
 				//color schemes
 				if (defaultSettings.clrSchemes == true) {
 				  if (defaultSettings.clrScheme.lightBlue == true){ //light blue
@@ -263,9 +265,7 @@
 					}
 				}
 				
-				//enquire - make it all dynamic.	
-				
-				//enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom dynamic
+				//enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom - make it all dynamic.	
 				function enquireMediaQ() {
 				
 				  enquire.register("screen and (min-width:768px)", {
@@ -275,6 +275,17 @@
 						  activeHoverStates(); //items active/hover/dim states
 							activeHoverStatesDim(); //items active/hover/dim states
 							activeHoverToolTip(); //item tooltip - active tooltip
+								 
+								 
+							/////////
+							//////
+							////
+							//
+							//refactor the options
+							//
+							////
+							//////
+							/////////	 
 								 
 						 //$('div.item, div.item img').style.height = "";
 						 
@@ -325,16 +336,13 @@
 				
 				 }).register("screen and (min-width:480px)", {
 					 match : function() {
-						
 						 itemHeightCalcReset(); //item/overlay height calc reset
- 
 					 }
 				 }).register("screen and (max-width:480px)", {	
 					 match : function() {
-						 
+					   $elm.hide().fadeIn(300); //hide and fade in
 				     createOvelays(); //create, append overlays
 						 itemHeightCalc(); //item/overlay height calc
-						 
 					 }
 				
 				 }).listen();
