@@ -24,7 +24,12 @@
 			var defaultSettings = $.extend({ //default,public? settings
 				columnsNo: 3, //no. of colums (3, X, X)
 				columnsDiy: false, //cancel column width calculations
-				activeHoverStatesAll: true, //active hover states (everything), on/off
+				activeHoverStates: {  //active hover states
+					activeHoverDim:true, 
+					activeHoverToolTipTitles:true,
+					activeHoverToolTipFixedBtm:false, 
+					activeHoverToolTipSlide:true
+				},
 				pageSelectors: {
 					header: 'div.header',
 					footer: 'div.footer' 
@@ -111,14 +116,30 @@
 					});
 				}
 				
-				//tooltip
-				function activeHoverToolTip() {
+				function activeHoverToolTip() { //item tooltip - active tooltip
 					$elm.each(function() {
 						
 						if ($(this).find('span.title').length > 0) { //if title exists
-						
-							if (defaultSettings.activeHoverStates.activeHoverToolTipSlide == false) { //if slide setting is false
+						  
+							if (defaultSettings.activeHoverStates.activeHoverToolTipSlide == true) { //if slide setting is true
+									
 								$(this).hover(function(e){ //hover/mouseOver
+									$parentElm.addClass('toolTipSlideIn'); //add parent class
+									var $elmHover = $(this);
+									var $toolTip = $('<div class="toolTip toolTipSlideIn"><span class="bg"/></div>').appendTo(this); //create toolTip and bg		
+									$($elmHover).children('span.title').appendTo($toolTip); //append title
+									$('div.toolTip').fadeIn(300).css('bottom', '0px');
+								},
+								function(e){ //mouseOut
+									$elm.removeClass('active'); //remove class
+									$('div.toolTip span.title').appendTo(this); //move title back to parent item
+									$('div.toolTip').css('bottom', '-25px').fadeOut(200).remove(); //remove/reset tooltip
+									$(this).removeClass('hovered'); //remove class
+								});
+								
+							}
+							else if (defaultSettings.activeHoverStates.activeHoverToolTipSlide == false) { //if slide setting is true
+							  $(this).hover(function(e){ //hover/mouseOver
 									var $elmHover = $(this);
 									var $toolTip = $('<div class="toolTip"><span class="bg"/></div>').appendTo(this); //create toolTip and bg		
 									$($elmHover).children('span.title').appendTo($toolTip); //append title
@@ -130,21 +151,7 @@
 									$('div.toolTip').fadeOut(200).remove(); //remove/reset tooltip
 									$(this).removeClass('hovered'); //remove class
 								});
-							}
-							else { 
-								$(this).hover(function(e){ //hover/mouseOver
-									$parentElm.addClass('toolTipSlideIn'); //add parent class
-									var $elmHover = $(this);
-									var $toolTip = $('<div class="toolTip toolTipSlideIn"><span class="bg"/></div>').appendTo($elmHover); //create toolTip and bg		
-									$($elmHover).children('span.title').appendTo($toolTip); //append title
-									$('div.toolTip').fadeIn(300).css('bottom', '0px');
-								},
-								function(e){ //mouseOut
-									$elm.removeClass('active'); //remove class
-									$('div.toolTip span.title').appendTo(this); //move title back to parent item
-									$('div.toolTip').css('bottom', '-25px').fadeOut(200).remove(); //remove/reset tooltip
-									$(this).removeClass('hovered'); //remove class
-								});
+								
 							}	
 						}
 						else {
@@ -152,13 +159,13 @@
 						}
 						
 					});
-				} //tooltip - activeHoverToolTip end
+				} //item tooltip - active tooltip end
 				
-				function activeHoverToolTipFixedBtm() { //tooltip fixed bottom
+				function activeHoverToolTipFixedBtm() { //item tooltip - fixed bottom
 					$parentElm.addClass('toolTipFixedBtm');
 				}
 				
-				function activeHoverToolTipReset() { //tooltip reset
+				function activeHoverToolTipReset() { //item tooltip - reset
 					$('div.toolTip').remove();
 					$('span.title').remove();
 				}
@@ -263,25 +270,32 @@
 				
 				  enquire.register("screen and (min-width:768px)", {
 					  match : function() {
+						   
+						  itemHeightCalcReset(); //item/overlay height calc reset
+						  activeHoverStates(); //items active/hover/dim states
+							activeHoverStatesDim(); //items active/hover/dim states
+							activeHoverToolTip(); //item tooltip - active tooltip
+								 
+						 //$('div.item, div.item img').style.height = "";
 						 
 						  //options init
-							if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
-								 activeHoverStates();
-								 activeHoverToolTip();
-							}
+							//if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
+								 //activeHoverStates();
+								 //activeHoverToolTip();
+							//}
 							
-							if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHover tooltip titles
-								 activeHoverToolTip(); //toolTip titles only
-							}
+							//if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHover tooltip titles
+						  // activeHoverToolTip(); //toolTip titles only
+							//}
 						 
-							if (defaultSettings.activeHoverStates.activeHoverToolTipFixedBtm == true) { //activeHover fixed btm
-								 activeHoverToolTipFixedBtm(); //toolTip fixed bottom
-							}
+							//if (defaultSettings.activeHoverStates.activeHoverToolTipFixedBtm == true) { //activeHover fixed btm
+							//	 activeHoverToolTipFixedBtm(); //toolTip fixed bottom
+							//}
 							
-							else if (defaultSettings.activeHoverStatesAll ==  false) { //activeHover false
+							//else if (defaultSettings.activeHoverStatesAll ==  false) { //activeHover false
 								 //do nothing?
-							}
-							
+							//}
+							/*
 							if (defaultSettings.activeHoverStates.activeHoverDim == true) { //activeHoverDim
 								 activeHoverStates();
 								 activeHoverStatesDim();
@@ -298,14 +312,15 @@
 							}
 							else if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == false) {
 								//do nothing
-							}
+							}*/
+							
 							
 					  }
 				 }).register("screen and (max-width:768px)", {
 					 match : function() { 
-					 
 						 $elm.unbind('mouseenter mouseleave'); //unbind all hover events
-						 
+						 $parentElm.removeClass('dimActive'); //remove class
+						 $parentElm.removeClass('toolTipSlideIn'); //remove class
 					 }
 				
 				 }).register("screen and (min-width:480px)", {
@@ -316,9 +331,10 @@
 					 }
 				 }).register("screen and (max-width:480px)", {	
 					 match : function() {
-					   console.log('MAX-WIDTH:480PX ACTIVE')
+						 
 				     createOvelays(); //create, append overlays
 						 itemHeightCalc(); //item/overlay height calc
+						 
 					 }
 				
 				 }).listen();
