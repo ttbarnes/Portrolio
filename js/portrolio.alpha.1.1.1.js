@@ -179,14 +179,16 @@
 						$($elm).removeClass('active', 'hovered');
 					});
 				}
-			
-				var $overlayTop = $('<div class="overlay overlayTop"/>', { //create overlay top, set height
-					id: 'streamOverlayTop'
-				}).insertBefore($parentElm.children(':eq(0)'));
-				var $overlayBtm = $('<div class="overlay overlayBtm"/>', { //create overlay btm, set height
-					id: 'streamOverlayBtm'
-				}).appendTo($parentElm);
-				var $overlays = $('div.overlay'); //get overlays
+			  
+				function createOvelays() { //create, append overlays
+				  var $overlayTop = $('<div class="overlay overlayTop"/>', { //create overlay top, set height
+						id: 'streamOverlayTop'
+					}).insertBefore($parentElm.children(':eq(0)'));
+					var $overlayBtm = $('<div class="overlay overlayBtm"/>', { //create overlay btm, set height
+						id: 'streamOverlayBtm'
+					}).appendTo($parentElm);	
+					var $overlays = $('div.overlay'); //get overlays
+				}
 				
 				//color schemes
 				if (defaultSettings.clrSchemes == true) {
@@ -257,8 +259,7 @@
 					  }
 				 }).register("screen and (max-width:768px)", {
 					 match : function() { 
-						 console.log('MAX-WIDTH:768PX ACTIVE')
-						 
+						 $elm.unbind('mouseenter mouseleave'); //unbind all hover events
 					 }
 				
 				 }).register("screen and (min-width:480px)", {
@@ -267,8 +268,8 @@
 					 }
 				 }).register("screen and (max-width:480px)", {
 					 match : function() {
-						 console.log('MAX-WIDTH:480PX ACTIVE')
-						 
+					   console.log('MAX-WIDTH:480PX ACTIVE')
+				     createOvelays(); //create, append overlays
 					 }
 				
 				 }).listen();
