@@ -333,7 +333,6 @@
 					 });
 				} 
 				
-				
 				//enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom - make it all dynamic.	
 				function enquireMediaQ() {
 				
@@ -381,7 +380,20 @@
 				
 				}
 				enquireMediaQ();
+	
+				//POC - TBC - not sure if this is a good approach? rethink..
+	      var $loading = $('<div id="loading">loading...</div>', { //create loading element
+					id: 'bingoBongoPongoLava'
+				}).insertBefore($parentElm);
 				
+				$loading.show(); //show the loading
+				$parentElm.hide(); //hide the stream
+				var $elmImg = $('div.item img'); //select images (quick-fix)
+				$elmImg.load(function(){ //images loaded?
+				  $loading.hide(); //hide the loading
+					$parentElm.fadeIn(800); //fade in
+				});
+		
 		  });
 		}
 	};
