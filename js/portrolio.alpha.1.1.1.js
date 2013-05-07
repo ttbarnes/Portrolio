@@ -3,18 +3,18 @@
 	* Plugin description to go here
 	* URL to go here
 	*
-	* Copyright 2013, Tony Barnes
+	* Author: Tony Barnes
 	* http://tonybarnes.me
-	* Free license stuff to go here
+	* No license or copyright - do what you like
 	*
-	* Date: 24/04/2013
+	* Last updated: 07/05/2013
+	* Original Release Date: XX/XX/2013
 	* Reqruiments: 
 	* 1: jQuery
-	* 2: XXXX
-	* 3: XXXX
+	* 2: Enquire JS (URL HERE)
+	* 3: Inview (URL HERE)
 	*
 */
-
 ;(function($){
 	
 	var methods = {
