@@ -248,9 +248,12 @@
 					}
 					
 					else if (defaultSettings.columnsNo == 3){ //3 columns
+						//var $parentElm = $($parentElm).width(); //get parent
 						var $overlays = $('div.overlay'); //get overlays
 						var $elmImg = $('img'); //img (quickfix)	
+						var $elmImgWidth = $('img').width(); //get img width
 						var col3HeightCalc = windowHeight * 0.333; //do calc
+						
 						$($overlays).css({  //set heights
 							'height': col3HeightCalc,
 							'max-height': elmImgMaxHeight
@@ -259,6 +262,7 @@
 							'height': col3HeightCalc,
 							'max-height': elmImgMaxHeight
 						});
+						
 					}
 					
 					else if (defaultSettings.columnsNo == 6){ //6 columns
@@ -326,10 +330,19 @@
 							
 					
 				}
+				function enqMediaQImgLoadHandle(){ //image handler
+				 $($elmImg).load(function(){ //after image load
+					 $parentElm.fadeIn(800); //fade in						
+					 var $elmImgWidth = $($elmImg).width(); //get the width, apply to parent
+					 $($parentElm).css("width",$elmImgWidth);
+				 });
+				}
+				 
 				function enqMediaQsmallScreensActivate () { //enquire js for small screens - activate
 					 //dynamic height calculation
 					 $(window).resize(function() {
 						 enqMediaQsmallScreens(); //enquire js for small screens
+						 enqMediaQImgLoadHandle(); //image handler
 					 });
 				} 
 				
@@ -389,7 +402,7 @@
 				$loading.show(); //show the loading
 				$parentElm.hide(); //hide the stream
 				var $elmImg = $('div.item img'); //select images (quick-fix)
-				$elmImg.load(function(){ //images loaded?
+				$elmImg.load(function(){ //after images loaded
 				  $loading.hide(); //hide the loading
 					$parentElm.fadeIn(800); //fade in
 				});
