@@ -183,7 +183,7 @@
 					});
 				}
 				
-				function createOvelays() { //create, append overlays
+				var createOverlays = function createOverlays() { //create, append overlays
 				  var $overlayTop = $('<div class="overlay overlayTop"/>', { //create overlay top, set height
 						id: 'streamOverlayTop'
 					}).insertBefore($parentElm.children(':eq(0)'));
@@ -199,16 +199,22 @@
 					var $overlayBtm = $('div.overlayBtm');
 					var $header = defaultSettings.pageSelectors.header;
 					var $footer = defaultSettings.pageSelectors.footer;
-					
 					var $elmLast = $($parentElm).find('div.item:last'); //find last item, add class
+					var $elm3 = $($parentElm).find('div.item:eq(2)'); //find 3rd item
 					$elmLast.addClass('last');
-					
+							
 					$($header).bind('inview', function(event, visible) { //if header in view
 						if (visible) {
 							$($overlayTop).css({'position': 'absolute', 'top':'0' });
-							$($overlayBtm).css({'position': 'absolute', 'bottom':'0' });
+							$($overlayBtm).css({'display': 'none' });
 						} else {
 							$($overlayTop).css({'position': 'fixed', 'top':'0' });
+							$($overlayBtm).css({'display': 'block', 'position': 'fixed', 'bottom':'0'});
+						}
+					});
+					
+					$($elm3).bind('inview', function(event, visible) { //if 3rd item in view
+						if (visible) {
 							$($overlayBtm).css({'position': 'fixed', 'bottom':'0' });
 						}
 					});
@@ -310,23 +316,23 @@
 				}
 				
 				function enqMediaQsmallScreens() { //enquire js for small screens
-							//plan is to change this according to the column setting (eg display 2 or 3 or 6 in the height window)
-							//POC			
-							var	windowHeight = $(window).height(); //window height
-							var $overlays = $('div.overlay'); //get overlays
-							var $elmImg = $('img'); //img (quickfix)	
-							//var fffdsfd = $columnsNoResult
-							//itemHeightCalc(); //item/overlay height calc
-							
-							var heightResult = windowHeight * 0.333; //do calc
-							$('div.overlay').css({  //set heights
-								'height': heightResult,
-								'max-height': heightResult
-							});
-							$('div.item img').css({  //set heights
-								'height': heightResult,
-								'max-height': heightResult
-							});
+					//plan is to change this according to the column setting (eg display 2 or 3 or 6 in the height window)
+					//POC			
+					var	windowHeight = $(window).height(); //window height
+					var $overlays = $('div.overlay'); //get overlays
+					var $elmImg = $('img'); //img (quickfix)	
+					//var fffdsfd = $columnsNoResult
+					//itemHeightCalc(); //item/overlay height calc
+					
+					var heightResult = windowHeight * 0.333; //do calc
+					$('div.overlay').css({  //set heights
+						'height': heightResult,
+						'max-height': heightResult
+					});
+					$('div.item img').css({  //set heights
+						'height': heightResult,
+						'max-height': heightResult
+					});
 							
 					
 				}
@@ -383,7 +389,7 @@
 				 }).register("screen and (max-width:480px)", {	
 					 match : function() {
 					   $elm.hide().fadeIn(300); //hide and fade in
-				     createOvelays(); //create, append overlays
+				     createOverlays(); //create, append overlays
 						 itemHeightCalc(); //item/overlay height calc
 						 overlayInView(); //in view - overlays
 						 var timeIt = window.setInterval(enqMediaQsmallScreensActivate, 1000); //timer (work in progress)
