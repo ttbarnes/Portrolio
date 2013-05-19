@@ -76,21 +76,8 @@
 						console.log('error - please enter 2, 3 or 6 columns') //error
 							$parentElm.hide();
 					}
-				}					
-				//else if (defaultSettings.columnsDiy == true){
-				//	console.log('columnsDiy active - no columns calculations')
-				//}
+				}
 				
-				//image resizing (and potential for popup) to go here - something like...
-				//get image src, store for the A HREF 
-				//resize the image for a thumb, dynamic css (and enq.JS integration)? - or width:100%; then calc parent elm.. *something*...
-				//click > popup
-				//do other popup stuff like...
-				//(will need to refactor a few things before hand) - create array, for NEXT/PREV buttons and arrow control stuff.
-				//resizing/calculations for the responsive popup
-				//thumbs in the popup? - prob no (mobile first?)
-				//some fancy animation options or something?
-			 
 				//active/hover states
 				function activeHoverStates() { //items active/hover/dim states
 					$elm.each(function() {
@@ -333,7 +320,6 @@
 						'height': heightResult,
 						'max-height': heightResult
 					});
-							
 					
 				}
 				function enqMediaQImgLoadHandle(){ //image handler
@@ -357,21 +343,13 @@
 				
 				  enquire.register("screen and (min-width:768px)", {
 					  match : function() {
-						   
 						  itemHeightCalcReset(); //item/overlay height calc reset
 						  activeHoverStates(); //items active/hover/dim states
 							activeHoverStatesDim(); //items active/hover/dim states
 							activeHoverToolTip(); //item tooltip - active tooltip
-								 
-							/////////
-							//////
-							////
 							//
 							//refactor the options - see external JS
 							//
-							////
-							//////
-							/////////	 	
 					  }
 				 }).register("screen and (max-width:768px)", {
 					 match : function() { 
