@@ -36,7 +36,7 @@
 				},
 				clrSchemes: true, //color schemes
 				  clrScheme: { 
-						lightBlue:true //lightBlue (lightBlue, darkBlue, black, white, grey)
+						darkBlue:true //darkBlue (lightBlue, darkBlue, black, white, grey)
 				  }
 			}, options);
 			
