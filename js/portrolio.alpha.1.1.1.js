@@ -24,12 +24,15 @@
 			var defaultSettings = $.extend({ //default,public? settings
 				columnsNo: 3, //no. of colums (3, X, X)
 				columnsDiy: false, //cancel column width calculations
+				activeHoverStates:true,
+				/*
 				activeHoverStates: {  //active hover states
 					activeHoverDim:true, 
-					activeHoverToolTipTitles:true,
-					activeHoverToolTipFixedBtm:false, 
+					activeHoverToolTipTitles:false,
+					activeHoverToolTipFixedBtm:false,
 					activeHoverToolTipSlide:true
 				},
+				*/
 				pageSelectors: {
 					header: 'div.header',
 					footer: 'div.footer'
@@ -80,6 +83,7 @@
 				
 				//active/hover states
 				function activeHoverStates() { //items active/hover/dim states
+					$parentElm.addClass('dimActive'); //add class
 					$elm.each(function() {
 						$(this).hover(function(e){ //hover/mouseOver
 							$elm.addClass('active'); //add class
@@ -93,25 +97,29 @@
 					});
 				} //items active/hover states end
 				
-				function activeHoverStatesDim() { //items active/hover/dim states
-					$parentElm.addClass('dimActive'); //add class
-					$elm.each(function() {
-						$(this).hover(function(e){ //hover/mouseOver
-							$elm.addClass('active'); //add class
-						},
-						function(e){ //mouseOut
-							$elm.removeClass('active');
-						});
-					});
-				}
 				
 				function activeHoverToolTip() { //item tooltip - active tooltip
 					$elm.each(function() {
 						
 						if ($(this).find('span.title').length > 0) { //if title exists
-						  
-							if (defaultSettings.activeHoverStates.activeHoverToolTipSlide == true) { //if slide setting is true
-									
+						  /*
+							if (defaultSettings.activeHoverStates.activeHoverToolTipSlide == false) { //if slide setting is true
+						
+									$(this).hover(function(e){ //hover/mouseOver
+									var $elmHover = $(this);
+									var $toolTip = $('<div class="toolTip"><span class="bg"/></div>').appendTo(this); //create toolTip and bg		
+									$($elmHover).children('span.title').appendTo($toolTip); //append title
+									$('div.toolTip').fadeIn(300);
+								},
+								function(e){ //mouseOut
+									//$elm.removeClass('active'); //remove class
+									$('div.toolTip span.title').appendTo(this); //move title back to parent item
+									$('div.toolTip').fadeOut(200).remove(); //remove/reset tooltip
+									$(this).removeClass('hovered'); //remove class
+								});
+							}
+							else {
+								*/
 								$(this).hover(function(e){ //hover/mouseOver
 									$parentElm.addClass('toolTipSlideIn'); //add parent class
 									var $elmHover = $(this);
@@ -126,22 +134,8 @@
 									$(this).removeClass('hovered'); //remove class
 								});
 								
-							}
-							else if (defaultSettings.activeHoverStates.activeHoverToolTipSlide == false) { //if slide setting is true
-							  $(this).hover(function(e){ //hover/mouseOver
-									var $elmHover = $(this);
-									var $toolTip = $('<div class="toolTip"><span class="bg"/></div>').appendTo(this); //create toolTip and bg		
-									$($elmHover).children('span.title').appendTo($toolTip); //append title
-									$('div.toolTip').fadeIn(300);
-								},
-								function(e){ //mouseOut
-									//$elm.removeClass('active'); //remove class
-									$('div.toolTip span.title').appendTo(this); //move title back to parent item
-									$('div.toolTip').fadeOut(200).remove(); //remove/reset tooltip
-									$(this).removeClass('hovered'); //remove class
-								});
 								
-							}	
+							//}	
 						}
 						else {
 							//do nothing - title doesn't exist
@@ -330,7 +324,7 @@
 				 });
 				}
 				 
-				function enqMediaQsmallScreensActivate () { //enquire js for small screens - activate
+				function enqMediaQsmallScreensActivate(){ //enquire js for small screens - activate
 					 //dynamic height calculation
 					 $(window).resize(function() {
 						 enqMediaQsmallScreens(); //enquire js for small screens
@@ -343,13 +337,25 @@
 				
 				  enquire.register("screen and (min-width:768px)", {
 					  match : function() {
+							
 						  itemHeightCalcReset(); //item/overlay height calc reset
-						  activeHoverStates(); //items active/hover/dim states
-							activeHoverStatesDim(); //items active/hover/dim states
-							activeHoverToolTip(); //item tooltip - active tooltip
+							
+							
 							//
 							//refactor the options - see external JS
 							//
+						  activeHoverStates(); //items active/hover states, dim
+							activeHoverToolTip(); //item tooltip,titles - active tooltip
+							
+							
+							//we want something like...
+							//run all - activeHoverStates and activeHoverToolTip
+							//else if
+							//1) just tooltip titles, just run that...
+							//2) just the dim, just run that..
+							//3) otherwise, run it all!
+							
+							
 					  }
 				 }).register("screen and (max-width:768px)", {
 					 match : function() { 

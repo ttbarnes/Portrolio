@@ -1,23 +1,23 @@
- //$('div.item, div.item img').style.height = "";
+ $('div.item, div.item img');
 						 
-						  //options init
-							//if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
-								 //activeHoverStates();
-								 //activeHoverToolTip();
-							//}
-							
-							//if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHover tooltip titles
-						  // activeHoverToolTip(); //toolTip titles only
-							//}
 						 
-							//if (defaultSettings.activeHoverStates.activeHoverToolTipFixedBtm == true) { //activeHover fixed btm
-							//	 activeHoverToolTipFixedBtm(); //toolTip fixed bottom
-							//}
+							if (defaultSettings.activeHoverStatesAll ==  true) { //activeHover all
+								 activeHoverStates();
+								 activeHoverToolTip();
+							}
 							
-							//else if (defaultSettings.activeHoverStatesAll ==  false) { //activeHover false
+							if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == true) { //activeHover tooltip titles
+						   activeHoverToolTip(); //toolTip titles only
+							}
+						 
+							if (defaultSettings.activeHoverStates.activeHoverToolTipFixedBtm == true) { //activeHover fixed btm
+								 activeHoverToolTipFixedBtm(); //toolTip fixed bottom
+							}
+							
+							else if (defaultSettings.activeHoverStatesAll ==  false) { //activeHover false
 								 //do nothing?
-							//}
-							/*
+							}
+							
 							if (defaultSettings.activeHoverStates.activeHoverDim == true) { //activeHoverDim
 								 activeHoverStates();
 								 activeHoverStatesDim();
@@ -34,5 +34,7 @@
 							}
 							else if (defaultSettings.activeHoverStates.activeHoverToolTipTitles == false) {
 								//do nothing
-							}*/
+							}
+							
+							
 							
