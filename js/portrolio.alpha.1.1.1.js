@@ -314,7 +314,6 @@
 						'height': heightResult,
 						'max-height': heightResult
 					});
-					
 				}
 				function enqMediaQImgLoadHandle(){ //image handler
 				 $($elmImg).load(function(){ //after image load
@@ -323,7 +322,8 @@
 					 $($parentElm).css("width",$elmImgWidth);
 				 });
 				}
-				 
+				
+				/*
 				function enqMediaQsmallScreensActivate(){ //enquire js for small screens - activate
 					 //dynamic height calculation
 					 $(window).resize(function() {
@@ -331,6 +331,8 @@
 						 enqMediaQImgLoadHandle(); //image handler
 					 });
 				} 
+				*/
+				
 				
 				//enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom - make it all dynamic.	
 				function enquireMediaQ() {
@@ -338,8 +340,7 @@
 				  enquire.register("screen and (min-width:768px)", {
 					  match : function() {
 							
-						  itemHeightCalcReset(); //item/overlay height calc reset
-							
+						  //itemHeightCalcReset(); //item/overlay height calc reset
 							
 							//
 							//refactor the options - see external JS
@@ -360,34 +361,54 @@
 				 }).register("screen and (max-width:768px)", {
 					 match : function() { 
 						 $elm.unbind('mouseenter mouseleave'); //unbind all hover events
-						 var asdfsaf = window.clearInterval(); //stop the timer (work in progess)
+						 //var asdfsaf = window.clearInterval(); //stop the timer (work in progess)
 						 $parentElm.removeClass('dimActive'); //remove class
 						 $parentElm.removeClass('toolTipSlideIn'); //remove class
 					 }
 				
 				 }).register("screen and (min-width:480px)", {
 					 match : function() {
-						 itemHeightCalcReset(); //item/overlay height calc reset
-	   				 var asdfsaf =  window.clearInterval(); //stop the timer (work in progess)
+						 //itemHeightCalcReset(); //item/overlay height calc reset
+	   				 //var asdfsaf =  window.clearInterval(); //stop the timer (work in progess)
 					 }
 				 }).register("screen and (max-width:480px)", {	
 					 match : function() {
 					   $elm.hide().fadeIn(300); //hide and fade in
 				     createOverlays(); //create, append overlays
-						 itemHeightCalc(); //item/overlay height calc
+						 enqMediaQsmallScreens(); //enquire js for small screens
+						 enqMediaQImgLoadHandle(); //image handler
+						 //itemHeightCalc(); //item/overlay height calc
 						 overlayInView(); //in view - overlays
-						 var timeIt = window.setInterval(enqMediaQsmallScreensActivate, 1000); //timer (work in progress)
+						 $(window).resize(function() {
+							 enqMediaQsmallScreens(); //enquire js for small screens
+							 enqMediaQImgLoadHandle(); //image handler
+						 });					 
+						 //var timeIt = window.setInterval(enqMediaQsmallScreensActivate, 1000); //timer (work in progress)
 					 }
 				
 				 }).listen();
 				
 				}
 				enquireMediaQ();
-	
+				
+				function enquireMediaQTimed(){ //timed stuff - item height calculations
+						enquire.register("screen and (min-width:480px)", {
+							match : function() {
+							itemHeightCalcReset(); //item/overlay height calc reset
+							console.log('timer 2 active')
+							
+							}		
+					 }).register("screen and (max-width:480px)", {
+							match : function() {
+							 //itemHeightCalc(); //item/overlay height calc	
+							console.log('timer 2 active')
+							}
+					 }).listen();
+				}
+				setInterval(enquireMediaQTimed, 300);
+					
 				//POC - TBC - not sure if this is a good approach? rethink..
-	      var $loading = $('<div id="loading">loading...</div>', { //create loading element
-					id: 'bingoBongoPongoLava'
-				}).insertBefore($parentElm);
+	      var $loading = $('<div id="loading">loading...</div>', {}).insertBefore($parentElm); //create loading element
 				
 				$loading.show(); //show the loading
 				$parentElm.hide(); //hide the stream
