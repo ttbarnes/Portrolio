@@ -7,7 +7,7 @@
 	* http://tonybarnes.me
 	* No license or copyright - do what you like
 	*
-	* Last updated: 07/05/2013
+	* Last updated: 26/05/2013
 	* Original Release Date: XX/XX/2013
 	* Reqruiments: 
 	* 1: jQuery
@@ -217,61 +217,15 @@
 					});	
 				}	
 				
-				var	windowHeight = $(window).height(); //window height
-				
-				function itemHeightCalc(){ //item/overlay height calc
-					var $overlays = $('div.overlay'); //get overlays
-					var $elmImg = $('img'); //img (quickfix)	
-					if (defaultSettings.columnsNo == 2){ //2 columns
-						var col2HeightCalc = windowHeight * 0.477; //do calc
-						$($overlays).css({  //set heights
-							'height': col2HeightCalc,
-							'max-height': elmImgMaxHeight
-						});
-						$($elmImg).css({  //set heights
-							'height': col2HeightCalc,
-							'max-height': elmImgMaxHeight
-						});
-					}
-					
-					else if (defaultSettings.columnsNo == 3){ //3 columns
-						//var $parentElm = $($parentElm).width(); //get parent
-						var $overlays = $('div.overlay'); //get overlays
-						var $elmImg = $('img'); //img (quickfix)	
-						var $elmImgWidth = $('img').width(); //get img width
-						var col3HeightCalc = windowHeight * 0.333; //do calc
-						
-						$($overlays).css({  //set heights
-							'height': col3HeightCalc,
-							'max-height': elmImgMaxHeight
-						});
-						$($elmImg).css({  //set heights
-							'height': col3HeightCalc,
-							'max-height': elmImgMaxHeight
-						});
-						
-					}
-					
-					else if (defaultSettings.columnsNo == 6){ //6 columns
-						var $overlays = $('div.overlay'); //get overlays
-						var $elmImg = $('img'); //img (quickfix)
-						var col6HeightCalc = windowHeight * 0.161; //do calc
-						$($overlays).css({  //set heights
-							'height': col6HeightCalc,
-							'max-height': elmImgMaxHeight
-						});
-						$($elmImg).css({  //set heights
-							'height': col6HeightCalc,
-							'max-height': elmImgMaxHeight
-						});
-					}
-				}
-				
 				function itemHeightCalcReset(){ //item/overlay height calc reset
-					var $overlays = $('div.overlay');
+					var $overlays = $('div.overlay'); //quickfix
 					var $elmImg = $('img'); //quickfix
 					$overlays.remove();
-					$elmImg.height('auto');
+					if ($($elmImg).height == ('auto')) { //set auto height
+					}
+					else {
+						$elmImg.height('auto');
+					}
 				 }
 				 
 				//color schemes
@@ -296,120 +250,106 @@
 					}
 				}
 				
-				function enqMediaQsmallScreens() { //enquire js for small screens
-					//plan is to change this according to the column setting (eg display 2 or 3 or 6 in the height window)
-					//POC			
+				function itemHeightCalc() { //item/overlay height calc
 					var	windowHeight = $(window).height(); //window height
 					var $overlays = $('div.overlay'); //get overlays
-					var $elmImg = $('img'); //img (quickfix)	
-					//var fffdsfd = $columnsNoResult
-					//itemHeightCalc(); //item/overlay height calc
+					var $elmImg = $('img'); //img (quickfix)
 					
-					var heightResult = windowHeight * 0.333; //do calc
-					$('div.overlay').css({  //set heights
-						'height': heightResult,
-						'max-height': heightResult
-					});
-					$('div.item img').css({  //set heights
-						'height': heightResult,
-						'max-height': heightResult
-					});
+					if (defaultSettings.columnsNo == 2){ //2 columns
+						var heightResult = windowHeight * 0.477; //do calc
+						$('div.overlay').css({  //set heights
+							'height': heightResult,
+							'max-height': heightResult
+						});
+						$('div.item img').css({  //set heights
+							'height': heightResult,
+							'max-height': heightResult
+						});
+					}
+					else if (defaultSettings.columnsNo == 3){ //3 columns
+						var heightResult = windowHeight * 0.333; //do calc
+						$('div.overlay').css({  //set heights
+							'height': heightResult,
+							'max-height': heightResult
+						});
+						$('div.item img').css({  //set heights
+							'height': heightResult,
+							'max-height': heightResult
+						});
+					}
+					else if (defaultSettings.columnsNo == 6){ //6 columns
+						var heightResult = windowHeight * 0.161; //do calc
+						$('div.overlay').css({  //set heights
+							'height': heightResult,
+							'max-height': heightResult
+						});
+						$('div.item img').css({  //set heights
+							'height': heightResult,
+							'max-height': heightResult
+						});
+					}
 				}
-				function enqMediaQImgLoadHandle(){ //image handler
-				 $($elmImg).load(function(){ //after image load
-					 $parentElm.fadeIn(800); //fade in						
-					 var $elmImgWidth = $($elmImg).width(); //get the width, apply to parent
-					 $($parentElm).css("width",$elmImgWidth);
-				 });
-				}
 				
-				/*
-				function enqMediaQsmallScreensActivate(){ //enquire js for small screens - activate
-					 //dynamic height calculation
-					 $(window).resize(function() {
-						 enqMediaQsmallScreens(); //enquire js for small screens
-						 enqMediaQImgLoadHandle(); //image handler
-					 });
-				} 
-				*/
-				
-				
-				//enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom - make it all dynamic.	
-				function enquireMediaQ() {
-				
+				function enquireMediaQ() { //enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom - make it all dynamic.
 				  enquire.register("screen and (min-width:768px)", {
 					  match : function() {
-							
-						  //itemHeightCalcReset(); //item/overlay height calc reset
-							
-							//
-							//refactor the options - see external JS
-							//
+						  itemHeightCalcReset(); //item/overlay height calc reset
 						  activeHoverStates(); //items active/hover states, dim
 							activeHoverToolTip(); //item tooltip,titles - active tooltip
-							
-							
-							//we want something like...
-							//run all - activeHoverStates and activeHoverToolTip
-							//else if
-							//1) just tooltip titles, just run that...
-							//2) just the dim, just run that..
-							//3) otherwise, run it all!
-							
-							
 					  }
 				 }).register("screen and (max-width:768px)", {
 					 match : function() { 
 						 $elm.unbind('mouseenter mouseleave'); //unbind all hover events
-						 //var asdfsaf = window.clearInterval(); //stop the timer (work in progess)
 						 $parentElm.removeClass('dimActive'); //remove class
 						 $parentElm.removeClass('toolTipSlideIn'); //remove class
 					 }
 				
 				 }).register("screen and (min-width:480px)", {
 					 match : function() {
-						 //itemHeightCalcReset(); //item/overlay height calc reset
-	   				 //var asdfsaf =  window.clearInterval(); //stop the timer (work in progess)
 					 }
 				 }).register("screen and (max-width:480px)", {	
 					 match : function() {
 					   $elm.hide().fadeIn(300); //hide and fade in
 				     createOverlays(); //create, append overlays
-						 enqMediaQsmallScreens(); //enquire js for small screens
-						 enqMediaQImgLoadHandle(); //image handler
-						 //itemHeightCalc(); //item/overlay height calc
+						 itemHeightCalc(); //item/overlay height calc
 						 overlayInView(); //in view - overlays
-						 $(window).resize(function() {
-							 enqMediaQsmallScreens(); //enquire js for small screens
-							 enqMediaQImgLoadHandle(); //image handler
-						 });					 
-						 //var timeIt = window.setInterval(enqMediaQsmallScreensActivate, 1000); //timer (work in progress)
 					 }
 				
 				 }).listen();
-				
 				}
 				enquireMediaQ();
 				
-				function enquireMediaQTimed(){ //timed stuff - item height calculations
-						enquire.register("screen and (min-width:480px)", {
-							match : function() {
-							itemHeightCalcReset(); //item/overlay height calc reset
-							console.log('timer 2 active')
-							
-							}		
-					 }).register("screen and (max-width:480px)", {
-							match : function() {
-							 //itemHeightCalc(); //item/overlay height calc	
-							console.log('timer 2 active')
-							}
-					 }).listen();
-				}
-				setInterval(enquireMediaQTimed, 300);
-					
-				//POC - TBC - not sure if this is a good approach? rethink..
-	      var $loading = $('<div id="loading">loading...</div>', {}).insertBefore($parentElm); //create loading element
+				var timerDelay = (function(){ //timer delay, see http://stackoverflow.com/questions/5489946/jquery-how-to-wait-for-the-end-or-resize-event-and-only-then-perform-an-ac
+					var timer = 0;
+					return function(callback, ms){
+						clearTimeout (timer);
+						timer = setTimeout(callback, ms);
+					};
+				})();
 				
+				$(window).resize(function() { //run after window resize is complete. Otherwise timer is reset.
+					timerDelay(function(){
+						function enquireMediaQTimed(){ //timed stuff - item height calculations
+							//enquire.register("screen and (min-width:768px)", {
+							//	match : function() {
+							//	}		
+						 //}).register("screen and (min-width:480px)", {
+							enquire.register("screen and (min-width:480px)", {
+								match : function() {
+									itemHeightCalcReset(); //item/overlay height calc reset
+									console.log('timer 2.2 active')
+								}		
+						 }).register("screen and (max-width:480px)", {
+								match : function() {
+									itemHeightCalc(); //item/overlay height calc
+								}
+						 }).listen();
+						}
+						enquireMediaQTimed();						
+					}, 500);
+				});
+
+	      var $loading = $('<div id="loading">loading...</div>', {}).insertBefore($parentElm); //create loading element
 				$loading.show(); //show the loading
 				$parentElm.hide(); //hide the stream
 				var $elmImg = $('div.item img'); //select images (quick-fix)
@@ -421,7 +361,7 @@
 		  });
 		}
 	};
-  $.fn.Portrolio = function( method ) {
+  $.fn.Portrolio = function(method) {
     if (methods[method]) {
       return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
     } 
