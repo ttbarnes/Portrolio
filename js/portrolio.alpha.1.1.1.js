@@ -24,7 +24,19 @@
 			var defaultSettings = $.extend({ //default,public? settings
 				columnsNo: 3, //no. of colums (3, X, X)
 				columnsDiy: false, //cancel column width calculations
-				activeHoverStates:true,
+				//activeHoverStates:true,
+				activeHoverStates: {
+					
+					//dim:true,
+					dimOnly:false,
+					toolTipNoDim:false,
+					//dim?
+					toolTip:true, //tooltip, no slide
+					toolTipFixedBtm:false, //tooltip fixed at bottom (default will slide but can be switched off)
+					toolTipSlide:false, //tooltip and slide
+				},
+				
+				//original
 				/*
 				activeHoverStates: {  //active hover states
 					activeHoverDim:true, 
@@ -42,6 +54,7 @@
 						darkBlue:true //darkBlue (lightBlue, darkBlue, black, white, grey)
 				  }
 			}, options);
+			
 			
 			return this.each(function(){
 				
@@ -81,6 +94,121 @@
 					}
 				}
 				
+				
+				
+				//////////
+				////////
+				//////
+				////
+				//
+				//refactoring user options relating to the dimming, active hover states and tooltip functionalities
+				//
+				////
+				//////
+				////////
+				//////////
+				
+				//true options
+			
+				var dst1 = defaultSettings.activeHoverStates.dim == true; //dim
+				var dst2 = defaultSettings.activeHoverStates.dimOnly == true; //dimOnly
+				
+			  
+				
+				var dst3 = defaultSettings.activeHoverStates.toolTip == true; //tooltip
+				var dst4 = defaultSettings.activeHoverStates.toolTipSlide == true; //tooltip, slide
+				
+				var dst5 = defaultSettings.activeHoverStates.toolTip == true && defaultSettings.activeHoverStates.toolTipSlide == true; //tooltip, slide
+				var dst6 = defaultSettings.activeHoverStates.toolTip == true && defaultSettings.activeHoverStates.toolTipFixedBtm == true; //tooltip, fixed bottom
+				var dst7 = defaultSettings.activeHoverStates.toolTip == true && defaultSettings.activeHoverStates.toolTipFixedBtm == true && defaultSettings.activeHoverStates.toolTipSlide == true; //tooltip, fixed bottom and slide
+				
+				//false options
+				//var dst5 = defaultSettings.activeHoverStates.toolTip == false;
+				var dst8 = defaultSettings.activeHoverStates.toolTip == true && defaultSettings.activeHoverStates.toolTipSlide == false; //tooltip, no slide  <SO RUN NORMAL TOOLTIP WITHOUT SLIDE
+				var dst9 = defaultSettings.activeHoverStates.toolTip == true && defaultSettings.activeHoverStates.toolTipFixedBtm == false; //tooltip, no fixed bottom. <<SO REGULAR RUN NORMAL TOOLTIP WITH SLIDE
+				var dst10 = defaultSettings.activeHoverStates.toolTip == true && defaultSettings.activeHoverStates.toolTipFixedBtm == true && defaultSettings.activeHoverStates.toolTipSlide == false; //tooltip, fixed bottom and slide
+				
+				
+				//WE CAN SPLIT the slideIN stuff in into a seperate function to be run
+			  //watch the variable scope!
+				
+				console.log('running refactored switch cases and options')
+				
+				//activeHover states
+				
+				function aHStatesDefault() { //active hover states, everything
+					$elm.each(function() {
+						
+						switch (true) {
+							case dst2: //dim only (aka default active-hover-states)	
+								console.log('dim only')
+							  $parentElm.addClass('dimActive');
+							break;	
+							case dst1: case dst3: case dst4: case dst5: case dst6: case dst7: //active hover, dimming
+								console.log('dim active')
+							  $parentElm.addClass('dimActive');
+								
+								$(this).hover(function(e){ //hover/mouseOver				
+									$elm.addClass('active');
+									var $elmHover = $(this);
+									$($elmHover).addClass('hovered');			
+									console.log('hover ineffect')				
+								},
+								function(e){ //mouseOut
+									$elm.removeClass('active');		
+									$(this).removeClass('hovered');
+								});
+							
+							
+							case dst3: case dst4: case dst5: case dst6: case dst7: //tooltip titles, tooltip slide
+							
+								console.log('LOOKING for span titles...')
+								
+								if ($(this).find('span.title').length > 0) { //if title exists
+								
+									console.log('span titles found')
+								
+									$(this).hover(function(e){ //hover/mouseOver
+										var $elmHover = $(this);
+										var $toolTip = $('<div class="toolTip toolTipSlideIn"><span class="bg"/></div>').appendTo(this); //create toolTip and bg
+										$('div.toolTip').css('display','block').animate({ bottom: "0" },30);
+										$($elmHover).children('span.title').appendTo($toolTip);
+									},
+									function(e){ //mouseOut
+										$elm.removeClass('active');
+										$(this).removeClass('hovered');										
+											$('div.toolTip span.title').appendTo(this); //move title back to parent item
+											$('div.toolTip').animate({ bottom: "-50px" }).remove(); //remove/reset tooltip
+											$(this).removeClass('hovered');
+									});
+								}
+								break;
+							  case dst4: case dst5: case dst6: case dst7: //tooltip titles, no slide
+									$(this).hover(function(e){
+										var $elmHover = $(this);
+										var $toolTip = $('<div class="toolTip"><span class="bg"/></div>').appendTo(this); //create toolTip and bg
+										$($elmHover).children('span.title').appendTo($toolTip);
+										$('div.toolTip').fadeIn(300);
+									},
+									function(e){
+										$elm.removeClass('active');
+										$('div.toolTip span.title').appendTo(this); //move title back to parent item
+										$('div.toolTip').fadeOut(200).remove(); //remove/reset tooltip
+										$(this).removeClass('hovered');
+									});
+							}
+							
+	
+							
+					});			
+							
+							
+				} //active hover states, everything END
+				
+				
+				
+				
+				/*
 				//active/hover states
 				function activeHoverStates() { //items active/hover/dim states
 					$parentElm.addClass('dimActive'); //add class
@@ -96,73 +224,28 @@
 						});
 					});
 				} //items active/hover states end
+				*/
 				
 				
-				function activeHoverToolTip() { //item tooltip - active tooltip
-					$elm.each(function() {
-						
-						if ($(this).find('span.title').length > 0) { //if title exists
-						  /*
-							if (defaultSettings.activeHoverStates.activeHoverToolTipSlide == false) { //if slide setting is true
-						
-									$(this).hover(function(e){ //hover/mouseOver
-									var $elmHover = $(this);
-									var $toolTip = $('<div class="toolTip"><span class="bg"/></div>').appendTo(this); //create toolTip and bg		
-									$($elmHover).children('span.title').appendTo($toolTip); //append title
-									$('div.toolTip').fadeIn(300);
-								},
-								function(e){ //mouseOut
-									//$elm.removeClass('active'); //remove class
-									$('div.toolTip span.title').appendTo(this); //move title back to parent item
-									$('div.toolTip').fadeOut(200).remove(); //remove/reset tooltip
-									$(this).removeClass('hovered'); //remove class
-								});
-							}
-							else {
-								*/
-								$(this).hover(function(e){ //hover/mouseOver
-									$parentElm.addClass('toolTipSlideIn'); //add parent class
-									var $elmHover = $(this);
-									var $toolTip = $('<div class="toolTip toolTipSlideIn"><span class="bg"/></div>').appendTo(this); //create toolTip and bg		
-									$($elmHover).children('span.title').appendTo($toolTip); //append title
-									$('div.toolTip').fadeIn(300).css('bottom', '0px');
-								},
-								function(e){ //mouseOut
-									$elm.removeClass('active'); //remove class
-									$('div.toolTip span.title').appendTo(this); //move title back to parent item
-									$('div.toolTip').css('bottom', '-25px').fadeOut(200).remove(); //remove/reset tooltip
-									$(this).removeClass('hovered'); //remove class
-								});
-								
-								
-							//}	
-						}
-						else {
-							//do nothing - title doesn't exist
-						}
-						
-					});
-				} //item tooltip - active tooltip end
 				
-				function activeHoverToolTipFixedBtm() { //item tooltip - fixed bottom
-					$parentElm.addClass('toolTipFixedBtm');
-				}
+				//toolTip:true, //tooltip, no slide
+				//toolTipFixedBtm:false, //tooltip fixed at bottom (default will slide but can be switched off)
+				//toolTipSlide:true, //tooltip and slide
 				
-				function activeHoverToolTipReset() { //item tooltip - reset
-					$('div.toolTip').remove();
-					$('span.title').remove();
-				}
 				
-				function activeHoverStatesReset() { //items active/hover states reset - remove classes
-					$($elm).removeClass('active, hovered'); //remove classes
-					$($parentElm).removeClass('dimActive');
-					$($elm).hover(function(e){ //hover/mouseOver
-						$($elm).removeClass('active', 'hovered');
-					},
-					function(e){ //mouseOut
-						$($elm).removeClass('active', 'hovered');
-					});
-				}
+				
+				
+				//////////
+				////////
+				//////
+				////
+				//
+				//refactoring END
+				//
+				////
+				//////
+				////////
+				//////////
 				
 				var createOverlays = function createOverlays() { //create, append overlays
 				  var $overlayTop = $('<div class="overlay overlayTop"/>', { //create overlay top, set height
@@ -216,17 +299,6 @@
 						}
 					});	
 				}	
-				
-				function itemHeightCalcReset(){ //item/overlay height calc reset
-					var $overlays = $('div.overlay'); //quickfix
-					var $elmImg = $('img'); //quickfix
-					$overlays.remove();
-					if ($($elmImg).height == ('auto')) { //set auto height
-					}
-					else {
-						$elmImg.height('auto');
-					}
-				 }
 				 
 				//color schemes
 				if (defaultSettings.clrSchemes == true) {
@@ -290,12 +362,23 @@
 					}
 				}
 				
+				function itemHeightCalcReset(){ //item/overlay height calc reset
+					var $overlays = $('div.overlay'); //quickfix
+					var $elmImg = $('img'); //quickfix
+					$overlays.remove();
+					if ($($elmImg).height == ('auto')) { //set auto height
+					}
+					else {
+						$elmImg.height('auto');
+					}
+				}
+				 
 				function enquireMediaQ() { //enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom - make it all dynamic.
 				  enquire.register("screen and (min-width:768px)", {
 					  match : function() {
 						  itemHeightCalcReset(); //item/overlay height calc reset
-						  activeHoverStates(); //items active/hover states, dim
-							activeHoverToolTip(); //item tooltip,titles - active tooltip
+						  aHStatesDefault();
+							//activeHoverToolTip(); //item tooltip,titles - active tooltip
 					  }
 				 }).register("screen and (max-width:768px)", {
 					 match : function() { 
