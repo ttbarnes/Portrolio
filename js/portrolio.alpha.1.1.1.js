@@ -287,8 +287,10 @@
 					 match : function() {
 					 }
 				 }).register("screen and (max-width:480px)", {	
-					 match : function() {
-						 $('div.toolTip').remove();
+					 match : function() {							 
+							if ($('div.toolTip').length > 0){ 
+							  $('div.toolTip').remove();
+							}
 					   $elm.hide().fadeIn(300);
 				     createOverlays(); //create, append overlays
 						 itemHeightCalc(); //item/overlay height calc
