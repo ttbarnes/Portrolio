@@ -288,7 +288,8 @@
 					 }
 				 }).register("screen and (max-width:480px)", {	
 					 match : function() {
-					   $elm.hide().fadeIn(300); //hide and fade in
+						 $('div.toolTip').remove();
+					   $elm.hide().fadeIn(300);
 				     createOverlays(); //create, append overlays
 						 itemHeightCalc(); //item/overlay height calc
 						 overlayInView(); //in view - overlays
