@@ -80,12 +80,12 @@
 			
 		}
 		
-		/*item hover*/
+		/*dimming*/
 		&.dimActive div.hovered {
 			opacity:100;
 		}
 		
-		/*item hover/active dim*/
+		/*dimming/active dim*/
 		&.dimActive div.active {
 			opacity:0.40;
 		}
@@ -95,10 +95,17 @@
 			opacity:100;
 		}
 		
+		/*tooltip title - active*/
+		&.ttipTitleActive {
+			div.item {
+				position:relative;
+			}
+		}
+
 	
 	}
 
-
+	
 /*tooltip*/
 .toolTip {
 	display:none;
@@ -119,6 +126,11 @@
 	transition: all 0.3s ease-in-out;
 	
 	/*tooltip bg and title*/
+	&.ttipTitleActive {
+	  div.item {
+		  position:relative;
+		}
+	}
 	.bg,
 	span.title {
 		display:block;
@@ -143,7 +155,7 @@
 
 .toolTipSlideIn {
   position:absolute;
-  bottom:-50px;
+  bottom:-25px;
 }
 /*toolTip fixed btm*/
 .toolTipFixedBtm {
