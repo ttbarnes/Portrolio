@@ -7,8 +7,7 @@
 	* http://tonybarnes.me
 	* No license or copyright - do what you like
 	*
-	* Last updated: 26/05/2013
-	* Original Release Date: XX/XX/2013
+	* Last updated: 27/05/2013
 	* Reqruiments: 
 	* 1: jQuery
 	* 2: Enquire JS (URL HERE)
@@ -27,11 +26,10 @@
 				//activeHoverStates:true,
 				activeHoverStates: {
 					
-					dim:false,
+					dim:true,
 					//dimOnly:false,
-					//dim?
 					toolTip:true, //tooltip, no slide
-					toolTipFixedBtm:false, //tooltip fixed at bottom (default will slide but can be switched off)
+					toolTipFixedBtm:true, //tooltip fixed at bottom (default will slide but can be switched off)
 					toolTipSlide:true, //tooltip and slide
 				},
 				
@@ -84,107 +82,66 @@
 					}
 				}
 				
-				
-				
-				//////////
-				////////
-				//////
-				////
-				//
-				//refactoring user options relating to the dimming, active hover states and tooltip functionalities
-				//
-				////
-				//////
-				////////
-				//////////
-				
 				var dst1 = defaultSettings.activeHoverStates.dim == true; //dim
 				var dst2 = defaultSettings.activeHoverStates.dimOnly == true; //dimOnly
-				
-				var dst3 = defaultSettings.activeHoverStates.toolTip == true; //tooltip
+				var dst3 = defaultSettings.activeHoverStates.toolTip == true; //tooltip (no slide as default)
 				var dst4 = defaultSettings.activeHoverStates.toolTipSlide == true; //tooltip, slide
-				//var dst5 = defaultSettings.activeHoverStates.toolTipFixedBtm == true; //tooltip, fixed bottom
-				
 				
 				function aHStatesDefault() { //active hover states, everything
 					$elm.each(function() {
 						
 						switch (true) {
-							case dst1: case dst2: //dim only (aka default active-hover-states)	
-								console.log('dim only')
+							case dst1: case dst2: //dim only (aka default active-hover-states)
 							  $parentElm.addClass('dimActive');
 							case dst1: case dst3: case dst4: //active hover
 								
 								$(this).hover(function(e){
 									$elm.addClass('active');
 									var $elmHover = $(this);
-									$($elmHover).addClass('hovered');			
-									console.log('hover ineffect')				
+									$($elmHover).addClass('hovered');
 								},
 								function(e){
 									$elm.removeClass('active');		
 									$(this).removeClass('hovered');
 								});
-							
-												
-						case dst3: //tooltip title (no slide)
-							$parentElm.addClass('ttipTitleActive');
-							if ($(this).find('span.title').length > 0) {
-								$(this).hover(function(e){
-									var $elmHover = $(this);
-									var $toolTip = $('<div class="toolTip"><span class="bg"/></div>').appendTo(this); //create toolTip and bg
-									//$('div.toolTip').fadeIn();
-									$('div.toolTip').show();
-									$($elmHover).children('span.title').appendTo('div.toolTip');
-									switch (true){
-										case dst4: //tooltip title slide
-											var $elmHover = $(this);
-											$('div.toolTip').addClass('toolTipSlideIn').animate({ bottom: "0" },200);
-									}
-								},
-								function(e){
-									$elm.removeClass('active');
-									$(this).removeClass('hovered');										
-									$('div.toolTip span.title').appendTo(this); //move title back to parent item
-									$('div.toolTip').remove();
-									$(this).removeClass('hovered');
-									$('div.toolTip').hide();
-									
-									switch (this){
-										case dst4: //tooltip title slide
-											$('div.toolTip').animate({ bottom: "-25px" }); //remove/reset tooltip
-									}
-									
-								});
 								
-							}
+								if(defaultSettings.activeHoverStates.toolTipFixedBtm == true){ //toolTip fixed bottom
+									$($parentElm).addClass('toolTipFixedBtm');
+									console.log('fixedBtm ACTIVE')
+								}
+												
+							case dst3: //tooltip title (dst3 has no slide as default)
+								$parentElm.addClass('ttipTitleActive');
+								if ($(this).find('span.title').length > 0) {
+									$(this).hover(function(e){
+										var $elmHover = $(this);
+										var $toolTip = $('<div class="toolTip"><span class="bg"/></div>').appendTo(this); //create toolTip and bg
+										//$('div.toolTip').fadeIn();
+										$('div.toolTip').show();
+										$($elmHover).children('span.title').appendTo('div.toolTip');
+										switch (true){
+											case dst4: //tooltip title slide
+												var $elmHover = $(this);
+												$('div.toolTip').addClass('toolTipSlideIn').animate({ bottom: "0" },200);
+										}
+									},
+									function(e){
+										$elm.removeClass('active');
+										$(this).removeClass('hovered');										
+										$('div.toolTip span.title').appendTo(this); //move title back to parent item
+										$('div.toolTip').remove();
+										$(this).removeClass('hovered');
+										$('div.toolTip').hide();
 										
-							/*
-						case dst5: //tooltip fixed bottom
-							$(this).hover(function(e){
-								$('div.toolTip').addClass('toolTipFixedBtm');
-							});
-							*/
+										switch (this){
+											case dst4: //tooltip title slide
+												$('div.toolTip').animate({ bottom: "-25px" }); //remove/reset tooltip			
+										}
+									});
+								}		
 							}
-							
-					});			
-							
-							
+					});
 				} //active hover states, everything END
-				
-				
-				
-				//////////
-				////////
-				//////
-				////
-				//
-				//refactoring END
-				//
-				////
-				//////
-				////////
-				//////////
 				
 				var createOverlays = function createOverlays() { //create, append overlays
 				  var $overlayTop = $('<div class="overlay overlayTop"/>', { //create overlay top, set height

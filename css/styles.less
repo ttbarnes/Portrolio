@@ -7,8 +7,7 @@
 	* http://tonybarnes.me
 	* No license or copyright - do what you like
 	*
-	* Last updated: 07/05/2013
-	* Original Release Date: XX/XX/2013
+	* Last updated: 7/05/2013
   ********************************
   plugin styles - full
 **********************************/
@@ -17,6 +16,11 @@
 	display:inline-block;
 	position:relative;
 	width:100%;
+	
+	.streamInnerWrapper {
+		position:relative;
+		z-index:1;	
+	}
 	
 	/*loading*/
 	#loading {
@@ -50,13 +54,7 @@
 				width:16.0270%; /*tbc*/
 				margin:0.32%; /*tbc*/
 			}
-		}
-    &.dimActive {			
-			&.hovered {
-				position:relative;
-				z-index:100;	
-			}
-		}
+		}	
 		/*stream item*/
 		&.item {
 					
@@ -89,6 +87,7 @@
 		&.dimActive div.active {
 			opacity:0.40;
 		}
+		
 		&.dimActive div.hovered {
 			position:relative;
 			z-index:100;
@@ -99,13 +98,16 @@
 		&.ttipTitleActive {
 			div.item {
 				position:relative;
+				z-index:1;
+				
+				&.hovered {
+					z-index:9;	
+				}
+				
 			}
 		}
-
-	
 	}
 
-	
 /*tooltip*/
 .toolTip {
 	display:none;
@@ -115,7 +117,6 @@
 	bottom:0;
 	left:0;
 	width:100%;
-	padding:5px 0;
 	z-index:99;
 	/*opacity:0;*/
 	box-shadow:0 2px 2px #000;
@@ -124,13 +125,7 @@
 	-o-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;	
 	transition: all 0.3s ease-in-out;
-	
-	/*tooltip bg and title*/
-	&.ttipTitleActive {
-	  div.item {
-		  position:relative;
-		}
-	}
+
 	.bg,
 	span.title {
 		display:block;
@@ -141,7 +136,8 @@
 	.bg {
 		width:100%;
 		min-height:25px;
-		z-index:9;
+		z-index:1;
+		position:relative;
 		opacity:0.80;
 	}
 	
@@ -159,13 +155,21 @@
 }
 /*toolTip fixed btm*/
 .toolTipFixedBtm {
-  position:fixed;
-	span.bg {
-		min-height:35px;
-	}
-	span.title {
-		bottom:8px;	
-		padding:0 10px;
+
+  .toolTip {		
+		position:fixed;
+		z-index:99999;
+		bottom:0;
+		
+		&.toolTipSlideIn {
+		  bottom:-25px;
+	  }			
+		span.bg {
+			min-height:40px;
+		}
+		span.title {	
+			padding:5px 10px;
+		}
 	}
 }
 
