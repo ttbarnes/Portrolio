@@ -80,6 +80,17 @@
     $(document).ready(function(e) {
       $('#streamWrapper').Portrolio({				
         columnsNo:3,
+				activeHoverStates: {
+					dim:true,
+					//dimOnly:true,
+					toolTip:true, //tooltip, no slide
+					//toolTipFixedBtm:false, //tooltip fixed at bottom
+					toolTipSlide:true, //tooltip and slide (default is true)
+				},
+				//toolTip:false, //tooltip, no slide
+				//toolTipFixedBtm:false, //tooltip fixed at bottom (default will slide but can be switched off)
+				//toolTipSlide:false, //tooltip and slide
+			
         clrScheme: {black:true}
       });
     });
