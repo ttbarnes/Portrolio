@@ -231,18 +231,7 @@
 					var $overlays = $('div.overlay'); //get overlays
 					var $elmImg = $('img'); //img (quickfix)
 					
-					if (defaultSettings.columnsNo == 2){ //2 columns
-						var heightResult = windowHeight * 0.477; //do calc
-						$('div.overlay').css({  //set heights
-							'height': heightResult,
-							'max-height': heightResult
-						});
-						$('div.item img').css({  //set heights
-							'height': heightResult,
-							'max-height': heightResult
-						});
-					}
-					else if (defaultSettings.columnsNo == 3){ //3 columns
+					if ((defaultSettings.columnsNo == 2) || (defaultSettings.columnsNo == 3)) { //2 or columns
 						var heightResult = windowHeight * 0.333; //do calc
 						$('div.overlay').css({  //set heights
 							'height': heightResult,
