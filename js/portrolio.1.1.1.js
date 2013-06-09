@@ -11,7 +11,7 @@
 	* Reqruiments: 
 	* 1: jQuery
 	* 2: Enquire JS (http://wicky.nillia.ms/enquire.js/)
-	* 3: Inview (https://github.com/protonet/jquery.inview)
+	* 3: Inview (http://github.com/protonet/jquery.inview)
 	*
 */
 ;(function($){
