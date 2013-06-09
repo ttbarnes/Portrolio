@@ -254,14 +254,15 @@
 						});
 					}
 					else if (defaultSettings.columnsNo == 6){ //6 columns
-						var heightResult = windowHeight * 0.161; //do calc
+						var heightResult1 = windowHeight * 0.161; //do calc
+						var heightResult2 = heightResult1 * 2;
 						$('div.overlay').css({  //set heights
-							'height': heightResult,
-							'max-height': heightResult
+							'height': heightResult2,
+							'max-height': heightResult2
 						});
 						$('div.item img').css({  //set heights
-							'height': heightResult,
-							'max-height': heightResult
+							'height': heightResult2,
+							'max-height': heightResult2
 						});
 					}
 				}

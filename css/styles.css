@@ -77,6 +77,8 @@
   margin: 0.32%;
   /*tbc*/
 
+  font-size: 0.750em;
+  letter-spacing: -1px;
 }
 #streamWrapper div.item {
   float: left;
