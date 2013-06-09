@@ -340,7 +340,7 @@
 				var $elmImg = $('div.item img'); //select images (quick-fix)
 				$elmImg.load(function(){ //after images loaded
 				  $loading.hide(); //hide the loading
-					$parentElm.fadeIn(800); //fade in
+					$parentElm.fadeIn(800).show(); //fade in
 				});
 		
 		  });
