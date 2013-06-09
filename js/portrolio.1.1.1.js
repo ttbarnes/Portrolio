@@ -333,7 +333,9 @@
 						enquireMediaQTimed();						
 					}, 500);
 				});
-
+				
+				//loading fails in Opera (mac)
+				/*
 	      var $loading = $('<div id="loading">loading...</div>', {}).insertBefore($parentElm); //create loading element
 				$loading.show(); //show the loading
 				$parentElm.hide(); //hide the stream
@@ -342,7 +344,8 @@
 				  $loading.hide(); //hide the loading
 					$parentElm.fadeIn(800).show(); //fade in
 				});
-		
+				*/
+				
 		  });
 		}
 	};
