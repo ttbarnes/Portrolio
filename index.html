@@ -2,15 +2,15 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html">
-    <title>Portrolio Alpha 1.1.1</title>
+    <title>Portrolio 1.1.1</title>
     <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
-    <link rel="stylesheet" href="css/demo.css?v01_01_001" />
-    <link rel="stylesheet" href="css/styles.css?v01_01_001" />
+    <link rel="stylesheet" href="css/demo.min.css" />
+    <link rel="stylesheet" href="css/styles.min.css" />
   </head>
   <body>
     <div class="header">
-      <h1>Portrolio <br/><span>Alpha 1.1.1.</span></h1>
-      <!--<p>A responsive portfolio layout with vertical overlay, dynamic height calculation/resizing, tooltips, colour schemes and more! <br/><span>(Alpha 1.1.1)</span></p>-->
+      <h1>Portrolio<span> 1.1.1</span></h1>
+      <p>A responsive portfolio layout with vertical overlay, dynamic height calculation/resizing, tooltips, colour schemes and more!</p>
     </div>
     <div class="wrapper">
       <div class="stream" id="streamWrapper">
@@ -57,7 +57,7 @@
           <div class="item">
             <img src="img/portrolio/main/005.jpg" alt="Image 11" />
             <span class="title">No diving</span>
-          </div>
+          </div>	
           <div class="item">
             <img src="img/portrolio/main/006.jpg" alt="Image 12" />
             <span class="title">Morning commute</span>
@@ -73,9 +73,9 @@
       <h2>&#8249;/div&#8250;</h2>
     </div>
     <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.inview.min.js?v01_01_001"></script>
-    <script type="text/javascript" src="js/enquire.min.js?v01_01_001"></script>
-    <script type="text/javascript" src="js/portrolio.alpha.1.1.1.js?v01_01_001"></script>
+    <script type="text/javascript" src="js/jquery.inview.min.js"></script>
+    <script type="text/javascript" src="js/enquire.min.js"></script>
+    <script type="text/javascript" src="js/portrolio.1.1.1.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(e) {
       $('#streamWrapper').Portrolio({				
@@ -83,15 +83,11 @@
 				activeHoverStates: {
 					dim:true,
 					//dimOnly:true,
-					toolTip:true, //tooltip, no slide
+					toolTip:true, //tooltip (default has no slide)
 					//toolTipFixedBtm:false, //tooltip fixed at bottom
 					toolTipSlide:true, //tooltip and slide (default is true)
 				},
-				//toolTip:false, //tooltip, no slide
-				//toolTipFixedBtm:false, //tooltip fixed at bottom (default will slide but can be switched off)
-				//toolTipSlide:false, //tooltip and slide
-			
-        clrScheme: {black:true}
+        clrScheme: {black:true} //colour scheme (affects tooltip and vertical overlay)
       });
     });
     </script>

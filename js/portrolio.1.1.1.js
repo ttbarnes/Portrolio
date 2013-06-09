@@ -1,21 +1,21 @@
 /*
-	* Portrolio Alpha v1.1.1
-	* Plugin description to go here
+	* Portrolio 1.1.1
+	* A responsive portfolio layout with vertical overlay, dynamic height calculation/resizing, tooltips, colour schemes and more
 	* URL to go here
 	*
 	* Author: Tony Barnes
 	* http://tonybarnes.me
 	* No license or copyright - do what you like
 	*
-	* Last updated: 27/05/2013
+	* Last updated: 09/06/2013
 	* Reqruiments: 
 	* 1: jQuery
-	* 2: Enquire JS (URL HERE)
-	* 3: Inview (URL HERE)
+	* 2: Enquire JS (http://wicky.nillia.ms/enquire.js/)
+	* 3: Inview (https://github.com/protonet/jquery.inview)
 	*
 */
 ;(function($){
-	
+
 	var methods = {
 		init : function(options) {
 		
@@ -41,7 +41,6 @@
 				  }
 			}, options);
 			
-			
 			return this.each(function(){
 				
 				//private settings/vars
@@ -56,8 +55,7 @@
 				i = $columnsAllowed;
 				
 				if (defaultSettings.columnsDiy == false) {	
-					var columsNoResult = defaultSettings.columnsNo; //get columns no/value
-					//for(var i = 0; i < columnsAllowed.length; i++){ 
+					var columsNoResult = defaultSettings.columnsNo; //get columns
 					if (defaultSettings.columsNoResult == $columnsAllowed[i]) { //need to figure out how to test this from the var instead of hard coded.
 					
 						if (defaultSettings.columnsNo == 2){ //2 columns
@@ -130,12 +128,6 @@
 							$($parentElm).addClass('toolTipFixedBtm');
 						}
 						
-						if (defaultSettings.activeHoverStates.dim == false) { //dim false
-							if(($parentElm).hasClass('dimActive')){
-								$parentElm.removeClass('dimActive');
-							}
-						}
-						
 						if (defaultSettings.activeHoverStates.dim == false || defaultSettings.activeHoverStates.dimOnly == true){
 							$parentElm.addClass('dimActive');
 							$(this).hover(function(e){
@@ -149,7 +141,13 @@
 							});
 						}
 						
-					
+						
+						if (defaultSettings.activeHoverStates.dim == false) { //dim false
+							if(($parentElm).hasClass('dimActive')){
+								$parentElm.removeClass('dimActive');
+							}
+						}
+						
 					});
 				} //active hover states END
 				

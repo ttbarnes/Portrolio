@@ -1,1 +1,405 @@
-#streamWrapper{display:inline-block;position:relative;width:100%}#streamWrapper .streamInnerWrapper{position:relative;z-index:1}#streamWrapper #loading{position:relative;top:0;color:#555;width:100%;text-align:center;min-height:20px;margin:0 0 35px 0}#streamWrapper div.col2 div.item{width:49.360%;margin:.32%}#streamWrapper div.col3 div.item{width:32.673%;margin:.32%}#streamWrapper div.col6 div.item{width:16.0270%;margin:.32%}#streamWrapper div.item{float:left;overflow:hidden;opacity:.95;-webkit-transition:opacity .3s ease-in-out;-moz-transition:opacity .3s ease-in-out;-o-transition:opacity .3s ease-in-out;-ms-transition:opacity .3s ease-in-out;transition:opacity .3s ease-in-out}#streamWrapper div.item img{display:block;width:100%}#streamWrapper div.item span{display:none}#streamWrapper div.dimActive div.hovered{opacity:100}#streamWrapper div.dimActive div.active{opacity:.40}#streamWrapper div.dimActive div.hovered{position:relative;z-index:100;opacity:100}#streamWrapper div.ttipTitleActive div.item{position:relative;z-index:1}#streamWrapper div.ttipTitleActive div.item.hovered{z-index:9}#streamWrapper .toolTip{display:none;color:#FFF;position:absolute;bottom:0;left:0;width:100%;z-index:99;box-shadow:0 2px 2px #000;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;-ms-transition:all .3s ease-in-out;transition:all .3s ease-in-out}#streamWrapper .toolTip .bg,#streamWrapper .toolTip span.title{display:block;position:absolute;bottom:0}#streamWrapper .toolTip .bg{width:100%;min-height:25px;z-index:1;position:relative;opacity:.80}#streamWrapper .toolTip span.title{z-index:10;bottom:3px;padding:0 5px}#streamWrapper .toolTipSlideIn{position:absolute;bottom:-25px}#streamWrapper .toolTipFixedBtm .toolTip{position:fixed;z-index:99999;bottom:0}#streamWrapper .toolTipFixedBtm .toolTip.toolTipSlideIn{bottom:-25px}#streamWrapper .toolTipFixedBtm .toolTip span.bg{min-height:40px}#streamWrapper .toolTipFixedBtm .toolTip span.title{padding:5px 10px}#streamWrapper div.overlay{display:none;z-index:3;width:100%;background:#000;min-width:100%;max-width:100%;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;-ms-transition:all .3s ease-in-out;transition:all .3s ease-in-out}#streamWrapper div.overlayTop{position:fixed;top:0}#streamWrapper div.overlayBtm{position:fixed;bottom:0}#streamWrapper .clrSchemeLightBlue div.overlayTop{background:-moz-linear-gradient(top,#7db9e8 0,rgba(255,255,255,0) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#7db9e8),color-stop(100%,rgba(255,255,255,0)));background:-webkit-linear-gradient(top,#7db9e8 0,rgba(255,255,255,0) 100%);background:-o-linear-gradient(top,#7db9e8 0,rgba(255,255,255,0) 100%);background:-ms-linear-gradient(top,#7db9e8 0,rgba(255,255,255,0) 100%);background:linear-gradient(to bottom,#7db9e8 0,rgba(255,255,255,0) 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db9e8',endColorstr='#00ffffff',GradientType=0)}#streamWrapper .clrSchemeLightBlue div.overlayBtm{background:-moz-linear-gradient(top,rgba(255,255,255,0) 0,#7db9e8 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(255,255,255,0)),color-stop(100%,#7db9e8));background:-webkit-linear-gradient(top,rgba(255,255,255,0) 0,#7db9e8 100%);background:-o-linear-gradient(top,rgba(255,255,255,0) 0,#7db9e8 100%);background:-ms-linear-gradient(top,rgba(255,255,255,0) 0,#7db9e8 100%);background:linear-gradient(to bottom,rgba(255,255,255,0) 0,#7db9e8 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff',endColorstr='#7db9e8',GradientType=0)}#streamWrapper .clrSchemeLightBlue div.item span.bg{background:#7db9e8}#streamWrapper .clrSchemeLightBlue div.item span.title{color:#FFF;text-shadow:0 2px 2px #333}#streamWrapper .clrSchemeDarkBlue div.overlayTop{background:-moz-linear-gradient(top,#0a3950 0,rgba(255,255,255,0) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#0a3950),color-stop(100%,rgba(255,255,255,0)));background:-webkit-linear-gradient(top,#0a3950 0,rgba(255,255,255,0) 100%);background:-o-linear-gradient(top,#0a3950 0,rgba(255,255,255,0) 100%);background:-ms-linear-gradient(top,#0a3950 0,rgba(255,255,255,0) 100%);background:linear-gradient(to bottom,#0a3950 0,rgba(255,255,255,0) 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0a3950',endColorstr='#00ffffff',GradientType=0)}#streamWrapper .clrSchemeDarkBlue div.overlayBtm{background:-moz-linear-gradient(top,rgba(255,255,255,0) 0,#0a3950 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(255,255,255,0)),color-stop(100%,#0a3950));background:-webkit-linear-gradient(top,rgba(255,255,255,0) 0,#0a3950 100%);background:-o-linear-gradient(top,rgba(255,255,255,0) 0,#0a3950 100%);background:-ms-linear-gradient(top,rgba(255,255,255,0) 0,#0a3950 100%);background:linear-gradient(to bottom,rgba(255,255,255,0) 0,#0a3950 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff',endColorstr='#0a3950',GradientType=0)}#streamWrapper .clrSchemeDarkBlue div.item span.bg{background:#0a3950}#streamWrapper .clrSchemeDarkBlue div.item span.title{color:#FFF;text-shadow:0 2px 2px #333}#streamWrapper .clrSchemeBlack div.overlayTop{background:-moz-linear-gradient(top,#000 0,rgba(51,51,51,0) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#000),color-stop(100%,rgba(51,51,51,0)));background:-webkit-linear-gradient(top,#000 0,rgba(51,51,51,0) 100%);background:-o-linear-gradient(top,#000 0,rgba(51,51,51,0) 100%);background:-ms-linear-gradient(top,#000 0,rgba(51,51,51,0) 100%);background:linear-gradient(to bottom,#000 0,rgba(51,51,51,0) 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000',endColorstr='#00333333',GradientType=0)}#streamWrapper .clrSchemeBlack div.overlayBtm{background:-moz-linear-gradient(top,rgba(51,51,51,0) 0,#000 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(51,51,51,0)),color-stop(100%,#000));background:-webkit-linear-gradient(top,rgba(51,51,51,0) 0,#000 100%);background:-o-linear-gradient(top,rgba(51,51,51,0) 0,#000 100%);background:-ms-linear-gradient(top,rgba(51,51,51,0) 0,#000 100%);background:linear-gradient(to bottom,rgba(51,51,51,0) 0,#000 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00333333',endColorstr='#000000',GradientType=0)}#streamWrapper .clrSchemeBlack div.item span.bg{background:#333}#streamWrapper .clrSchemeBlack div.item span.title{color:#FFF;text-shadow:0 2px 2px #333}#streamWrapper .clrSchemeWhite div.overlayTop{background:-moz-linear-gradient(top,#f3f3f3 0,rgba(255,255,255,0) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#f3f3f3),color-stop(100%,rgba(255,255,255,0)));background:-webkit-linear-gradient(top,#f3f3f3 0,rgba(255,255,255,0) 100%);background:-o-linear-gradient(top,#f3f3f3 0,rgba(255,255,255,0) 100%);background:-ms-linear-gradient(top,#f3f3f3 0,rgba(255,255,255,0) 100%);background:linear-gradient(to bottom,#f3f3f3 0,rgba(255,255,255,0) 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f3f3',endColorstr='#00ffffff',GradientType=0)}#streamWrapper .clrSchemeWhite div.overlayBtm{background:-moz-linear-gradient(top,rgba(255,255,255,0) 0,#f3f3f3 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(255,255,255,0)),color-stop(100%,#f3f3f3));background:-webkit-linear-gradient(top,rgba(255,255,255,0) 0,#f3f3f3 100%);background:-o-linear-gradient(top,rgba(255,255,255,0) 0,#f3f3f3 100%);background:-ms-linear-gradient(top,rgba(255,255,255,0) 0,#f3f3f3 100%);background:linear-gradient(to bottom,rgba(255,255,255,0) 0,#f3f3f3 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff',endColorstr='#f3f3f3',GradientType=0)}#streamWrapper .clrSchemeWhite div.item span.bg{background:#f3f3f3;opacity:.90}#streamWrapper .clrSchemeWhite div.item span.title{color:#222;text-shadow:0 2px 2px #CCC}#streamWrapper .clrSchemeGrey div.overlayTop{background:-moz-linear-gradient(top,#666 0,rgba(243,243,243,0) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#666),color-stop(100%,rgba(243,243,243,0)));background:-webkit-linear-gradient(top,#666 0,rgba(243,243,243,0) 100%);background:-o-linear-gradient(top,#666 0,rgba(243,243,243,0) 100%);background:-ms-linear-gradient(top,#666 0,rgba(243,243,243,0) 100%);background:linear-gradient(to bottom,#666 0,rgba(243,243,243,0) 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666',endColorstr='#00f3f3f3',GradientType=0)}#streamWrapper .clrSchemeGrey div.overlayBtm{background:-moz-linear-gradient(top,rgba(243,243,243,0) 0,#666 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(243,243,243,0)),color-stop(100%,#666));background:-webkit-linear-gradient(top,rgba(243,243,243,0) 0,#666 100%);background:-o-linear-gradient(top,rgba(243,243,243,0) 0,#666 100%);background:-ms-linear-gradient(top,rgba(243,243,243,0) 0,#666 100%);background:linear-gradient(to bottom,rgba(243,243,243,0) 0,#666 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00f3f3f3',endColorstr='#666666',GradientType=0)}#streamWrapper .clrSchemeGrey div.item span.bg{background:#666}#streamWrapper .clrSchemeGrey div.item span.title{color:#f3f3f3;text-shadow:0 2px 2px #000}@media(max-width:1000px){.wrapper{width:100%}}@media(max-width:768px){#streamWrapper div.col2 div.item{float:none;width:97%;margin:1.7% auto}#streamWrapper div.col3 div.item{width:49.360%}#streamWrapper div.col6 div.item{width:24.3622%}}@media(max-width:480px){#streamWrapper{text-align:center}#streamWrapper .streamInnerWrapper{max-width:100%;margin:0 auto;position:relative}#streamWrapper div.overlay,#streamWrapper div.item{width:100%;margin:0}#streamWrapper div.item{width:100%;max-width:100%}#streamWrapper div.item img{height:auto;width:auto;position:relative;margin:0 auto}#streamWrapper div.overlay{display:block}#streamWrapper div.col2 div.item{width:100%;margin:0 0 1% 0}#streamWrapper div.col3 div.item{width:100%;margin:0}#streamWrapper div.col6 div.item{width:49.360%}}
+/********************************
+* Portrolio 1.1.1
+	* A responsive portfolio layout with vertical overlay, dynamic height calculation/resizing, tooltips, colour schemes and more
+	* URL to go here
+	*
+	* Author: Tony Barnes
+	* http://tonybarnes.me
+	* No license or copyright - do what you like
+	*
+	* Last updated: 09/06/2013
+  ********************************
+  plugin styles
+**********************************/
+/*stream*/
+#streamWrapper {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  /*loading*/
+
+  /*tooltip*/
+
+  /*toolTip fixed btm*/
+
+  /*overlay*/
+
+  /*overlay top*/
+
+  /*overlay bottom*/
+
+  /*colour schemes*/
+
+  /*light blue*/
+
+  /*dark blue*/
+
+  /*black*/
+
+  /*white*/
+
+  /*grey*/
+
+}
+#streamWrapper .streamInnerWrapper {
+  position: relative;
+  z-index: 1;
+}
+#streamWrapper #loading {
+  position: relative;
+  top: 0;
+  color: #555;
+  width: 100%;
+  text-align: center;
+  min-height: 20px;
+  margin: 0 0 35px 0;
+}
+#streamWrapper div {
+  /*stream item*/
+
+  /*dimming*/
+
+  /*dimming/active dim*/
+
+  /*tooltip title - active*/
+
+}
+#streamWrapper div.col2 div.item {
+  width: 49.360%;
+  margin: 0.32%;
+}
+#streamWrapper div.col3 div.item {
+  width: 32.673%;
+  margin: 0.32%;
+}
+#streamWrapper div.col6 div.item {
+  width: 16.0270%;
+  margin: 0.32%;
+  /*tbc*/
+
+}
+#streamWrapper div.item {
+  float: left;
+  overflow: hidden;
+  opacity: 0.95;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+#streamWrapper div.item img {
+  display: block;
+  width: 100%;
+}
+#streamWrapper div.item span {
+  display: none;
+}
+#streamWrapper div.dimActive div.hovered {
+  opacity: 100;
+}
+#streamWrapper div.dimActive div.active {
+  opacity: 0.40;
+}
+#streamWrapper div.dimActive div.hovered {
+  position: relative;
+  z-index: 100;
+  opacity: 100;
+}
+#streamWrapper div.ttipTitleActive div.item {
+  position: relative;
+  z-index: 1;
+}
+#streamWrapper div.ttipTitleActive div.item.hovered {
+  z-index: 9;
+}
+#streamWrapper .toolTip {
+  display: none;
+  /*background:#7DB9E8;*/
+
+  color: #FFF;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  /*opacity:0;*/
+
+  box-shadow: 0 2px 2px #000;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#streamWrapper .toolTip .bg,
+#streamWrapper .toolTip span.title {
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
+#streamWrapper .toolTip .bg {
+  width: 100%;
+  min-height: 25px;
+  z-index: 1;
+  position: relative;
+  opacity: 0.80;
+}
+#streamWrapper .toolTip span.title {
+  z-index: 10;
+  bottom: 3px;
+  padding: 0 5px;
+}
+#streamWrapper .toolTipSlideIn {
+  position: absolute;
+  bottom: -25px;
+}
+#streamWrapper .toolTipFixedBtm .toolTip {
+  position: fixed;
+  z-index: 99999;
+  bottom: 0;
+}
+#streamWrapper .toolTipFixedBtm .toolTip.toolTipSlideIn {
+  bottom: -25px;
+}
+#streamWrapper .toolTipFixedBtm .toolTip span.bg {
+  min-height: 40px;
+}
+#streamWrapper .toolTipFixedBtm .toolTip span.title {
+  padding: 5px 10px;
+}
+#streamWrapper div.overlay {
+  display: none;
+  z-index: 3;
+  width: 100%;
+  background: #000;
+  min-width: 100%;
+  max-width: 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#streamWrapper div.overlayTop {
+  position: fixed;
+  top: 0;
+}
+#streamWrapper div.overlayBtm {
+  position: fixed;
+  bottom: 0;
+}
+#streamWrapper .clrSchemeLightBlue div.overlayTop {
+  background: -moz-linear-gradient(top, #7db9e8 0%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7db9e8), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(top, #7db9e8 0%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(top, #7db9e8 0%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(top, #7db9e8 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to bottom, #7db9e8 0%, rgba(255, 255, 255, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db9e8', endColorstr='#00ffffff', GradientType=0);
+}
+#streamWrapper .clrSchemeLightBlue div.overlayBtm {
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #7db9e8 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, #7db9e8));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #7db9e8 100%);
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #7db9e8 100%);
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #7db9e8 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #7db9e8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#7db9e8', GradientType=0);
+}
+#streamWrapper .clrSchemeLightBlue div.item span.bg {
+  background: #7DB9E8;
+}
+#streamWrapper .clrSchemeLightBlue div.item span.title {
+  color: #FFF;
+  text-shadow: 0 2px 2px #333;
+}
+#streamWrapper .clrSchemeDarkBlue div.overlayTop {
+  background: -moz-linear-gradient(top, #0a3950 0%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0a3950), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(top, #0a3950 0%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(top, #0a3950 0%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(top, #0a3950 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to bottom, #0a3950 0%, rgba(255, 255, 255, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0a3950', endColorstr='#00ffffff', GradientType=0);
+}
+#streamWrapper .clrSchemeDarkBlue div.overlayBtm {
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #0a3950 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, #0a3950));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #0a3950 100%);
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #0a3950 100%);
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #0a3950 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #0a3950 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#0a3950', GradientType=0);
+}
+#streamWrapper .clrSchemeDarkBlue div.item span.bg {
+  background: #0a3950;
+}
+#streamWrapper .clrSchemeDarkBlue div.item span.title {
+  color: #FFF;
+  text-shadow: 0 2px 2px #333;
+}
+#streamWrapper .clrSchemeBlack div.overlayTop {
+  background: -moz-linear-gradient(top, #000000 0%, rgba(51, 51, 51, 0) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, rgba(51, 51, 51, 0)));
+  background: -webkit-linear-gradient(top, #000000 0%, rgba(51, 51, 51, 0) 100%);
+  background: -o-linear-gradient(top, #000000 0%, rgba(51, 51, 51, 0) 100%);
+  background: -ms-linear-gradient(top, #000000 0%, rgba(51, 51, 51, 0) 100%);
+  background: linear-gradient(to bottom, #000000 0%, rgba(51, 51, 51, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00333333', GradientType=0);
+}
+#streamWrapper .clrSchemeBlack div.overlayBtm {
+  background: -moz-linear-gradient(top, rgba(51, 51, 51, 0) 0%, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(51, 51, 51, 0)), color-stop(100%, #000000));
+  background: -webkit-linear-gradient(top, rgba(51, 51, 51, 0) 0%, #000000 100%);
+  background: -o-linear-gradient(top, rgba(51, 51, 51, 0) 0%, #000000 100%);
+  background: -ms-linear-gradient(top, rgba(51, 51, 51, 0) 0%, #000000 100%);
+  background: linear-gradient(to bottom, rgba(51, 51, 51, 0) 0%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00333333', endColorstr='#000000', GradientType=0);
+}
+#streamWrapper .clrSchemeBlack div.item span.bg {
+  background: #333;
+}
+#streamWrapper .clrSchemeBlack div.item span.title {
+  color: #FFF;
+  text-shadow: 0 2px 2px #333;
+}
+#streamWrapper .clrSchemeWhite div.overlayTop {
+  background: -moz-linear-gradient(top, #f3f3f3 0%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f3f3), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(top, #f3f3f3 0%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(top, #f3f3f3 0%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(top, #f3f3f3 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to bottom, #f3f3f3 0%, rgba(255, 255, 255, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f3f3', endColorstr='#00ffffff', GradientType=0);
+}
+#streamWrapper .clrSchemeWhite div.overlayBtm {
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #f3f3f3 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, #f3f3f3));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #f3f3f3 100%);
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #f3f3f3 100%);
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #f3f3f3 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #f3f3f3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#f3f3f3', GradientType=0);
+}
+#streamWrapper .clrSchemeWhite div.item span.bg {
+  background: #F3F3F3;
+  opacity: 0.90;
+}
+#streamWrapper .clrSchemeWhite div.item span.title {
+  color: #222;
+  text-shadow: 0 2px 2px #CCC;
+}
+#streamWrapper .clrSchemeGrey div.overlayTop {
+  background: -moz-linear-gradient(top, #666666 0%, rgba(243, 243, 243, 0) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #666666), color-stop(100%, rgba(243, 243, 243, 0)));
+  background: -webkit-linear-gradient(top, #666666 0%, rgba(243, 243, 243, 0) 100%);
+  background: -o-linear-gradient(top, #666666 0%, rgba(243, 243, 243, 0) 100%);
+  background: -ms-linear-gradient(top, #666666 0%, rgba(243, 243, 243, 0) 100%);
+  background: linear-gradient(to bottom, #666666 0%, rgba(243, 243, 243, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#00f3f3f3', GradientType=0);
+}
+#streamWrapper .clrSchemeGrey div.overlayBtm {
+  background: -moz-linear-gradient(top, rgba(243, 243, 243, 0) 0%, #666666 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(243, 243, 243, 0)), color-stop(100%, #666666));
+  background: -webkit-linear-gradient(top, rgba(243, 243, 243, 0) 0%, #666666 100%);
+  background: -o-linear-gradient(top, rgba(243, 243, 243, 0) 0%, #666666 100%);
+  background: -ms-linear-gradient(top, rgba(243, 243, 243, 0) 0%, #666666 100%);
+  background: linear-gradient(to bottom, rgba(243, 243, 243, 0) 0%, #666666 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00f3f3f3', endColorstr='#666666', GradientType=0);
+}
+#streamWrapper .clrSchemeGrey div.item span.bg {
+  background: #666;
+}
+#streamWrapper .clrSchemeGrey div.item span.title {
+  color: #F3F3F3;
+  text-shadow: 0 2px 2px #000;
+}
+/*********
+responsive
+**********/
+@media (max-width: 1000px) {
+  .wrapper {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  #streamWrapper {
+    /*columns*/
+  
+    /*2col*/
+  
+    /*3col*/
+  
+    /*6col*/
+  
+  }
+  #streamWrapper div.col2 div.item {
+    float: none;
+    width: 97%;
+    margin: 1.7% auto;
+  }
+  #streamWrapper div.col3 div.item {
+    width: 49.360%;
+  }
+  #streamWrapper div.col6 div.item {
+    width: 24.3622%;
+    /*finalised in chrome...*/
+  
+  }
+}
+@media (max-width: 480px) {
+  #streamWrapper {
+    text-align: center;
+  }
+  #streamWrapper .streamInnerWrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  #streamWrapper {
+    /*stream item*/
+  
+    /*overlay*/
+  
+    /*columns*/
+  
+    /*2col*/
+  
+    /*3col*/
+  
+    /*6col*/
+  
+  }
+  #streamWrapper div.overlay,
+  #streamWrapper div.item {
+    width: 100%;
+    margin: 0;
+  }
+  #streamWrapper div.item {
+    width: 100%;
+    max-width: 100%;
+  }
+  #streamWrapper div.item img {
+    height: auto;
+    width: auto;
+    position: relative;
+    margin: 0 auto;
+  }
+  #streamWrapper div.overlay {
+    display: block;
+  }
+  #streamWrapper div.col2 div.item {
+    width: 100%;
+    margin: 0 0 1% 0;
+  }
+  #streamWrapper div.col3 div.item {
+    width: 100%;
+    margin: 0;
+  }
+  #streamWrapper div.col6 div.item {
+    width: 49.360%;
+    /*finalised in chrome...*/
+  
+  }
+}

@@ -1,13 +1,13 @@
 /********************************
-* Portrolio Alpha v1.1.1
-	* Plugin description to go here
+* Portrolio 1.1.1
+	* A responsive portfolio layout with vertical overlay, dynamic height calculation/resizing, tooltips, colour schemes and more
 	* URL to go here
 	*
 	* Author: Tony Barnes
 	* http://tonybarnes.me
 	* No license or copyright - do what you like
 	*
-	* Last updated: 27/05/2013
+	* Last updated: 09/06/2013
   ********************************
   plugin demo styles
 **********************************/
@@ -61,7 +61,7 @@ body {
 	color:#888;
 	
 	h1 {
-		padding:25px 10px 25px 10px;
+		padding:25px 10px;
 		font-size:2.1em;
 		
 		span {
@@ -71,6 +71,7 @@ body {
 	}
 	
 	p {
+		display:none;
 		color:#565656;
 		letter-spacing:-2px;
 		font-size:0.950em;
@@ -82,10 +83,6 @@ body {
 		}
 	}
 }
-
-
-
-
 
 /*footer*/
 .footer {
@@ -101,4 +98,40 @@ body {
 		font-size:1.4em;
 	}
 
+}
+
+@media(max-width:1000px){
+	.header {
+		margin-bottom:30px;
+	}
+	.header h1 {
+		font-size:2em;
+		padding:15px 10px;
+	}
+	.footer {
+		margin-top:20px;
+	}
+	.footer h2 {
+		font-size:1.3em;
+	}
+}
+
+@media(max-width:480px) {
+	h3 {
+		padding:1em;
+	}
+	.header {
+		margin-bottom:0;
+	}
+	.header h1 {
+		font-size:1.5em;
+	}
+	.footer {
+		margin-top:0;
+	}
+	
+	.footer h2 {
+		font-size:1em;
+	}
+	
 }
