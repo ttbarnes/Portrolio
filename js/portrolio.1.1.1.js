@@ -7,7 +7,7 @@
 	* http://tonybarnes.me
 	* No license or copyright - do what you like
 	*
-	* Last updated: 09/06/2013
+	* Last updated: 15/06/2013
 	* Reqruiments: 
 	* 1: jQuery
 	* 2: Media.match (https://github.com/weblinc/media-match)
@@ -277,13 +277,11 @@
 					window.matchMedia('screen and (min-width: 768px)')
 						.addListener(function(mql1) {
 							if (mql1.matches) {
-								console.log('mql1 matches')
 								itemHeightCalcReset(); //item/overlay height calc reset
 								aHStatesDefault();
 							}
 						});
 						if (mql1.matches) {
-							console.log('mql1 matches')
 							itemHeightCalcReset(); //item/overlay height calc reset
 							aHStatesDefault();
 						}
