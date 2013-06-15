@@ -10,7 +10,7 @@
 	* Last updated: 09/06/2013
 	* Reqruiments: 
 	* 1: jQuery
-	* 2: Enquire JS (http://wicky.nillia.ms/enquire.js/)
+	* 2: Media.match (https://github.com/weblinc/media-match)
 	* 3: Inview (http://github.com/protonet/jquery.inview)
 	*
 */
@@ -267,35 +267,58 @@
 					}
 				}
 				 
-				function enquireMediaQ() { //enquire.js - awesome media queries (http://wicky.nillia.ms/enquire.js/) - custom - make it all dynamic.
-				  enquire.register("screen and (min-width:768px)", {
-					  match : function() {
-						  itemHeightCalcReset(); //item/overlay height calc reset
-						  aHStatesDefault();
-							//activeHoverToolTip(); //item tooltip,titles - active tooltip
-					  }
-				 }).register("screen and (max-width:768px)", {
-					 match : function() { 
-						 $elm.unbind('mouseenter mouseleave'); //unbind all hover events
-						 $parentElm.removeClass('dimActive'); //remove class
-						 $parentElm.removeClass('toolTipSlideIn'); //remove class
-					 }
-				
-				 }).register("screen and (min-width:480px)", {
-					 match : function() {
-					 }
-				 }).register("screen and (max-width:480px)", {	
-					 match : function() {							 
-							if ($('div.toolTip').length > 0){ 
-								 $('div.toolTip').remove();
+				function enquireMediaQ() { //matchMedia - make it all dynamic.
+					
+					var mql1 = window.matchMedia('screen and (min-width: 768px)');
+					var mql2 = window.matchMedia('screen and (max-width: 768px)');
+					//var mql3 = window.matchMedia('screen and (min-width: 480px)');
+					var mql4 = window.matchMedia('screen and (max-width: 480px)');
+					
+					window.matchMedia('screen and (min-width: 768px)')
+						.addListener(function(mql1) {
+							if (mql1.matches) {
+								console.log('mql1 matches')
+								itemHeightCalcReset(); //item/overlay height calc reset
+								aHStatesDefault();
 							}
-					   $elm.hide().fadeIn(300);
-				     createOverlays(); //create, append overlays
-						 itemHeightCalc(); //item/overlay height calc
-						 overlayInView(); //in view - overlays
-					 }
-				
-				 }).listen();
+						});
+						if (mql1.matches) {
+							console.log('mql1 matches')
+							itemHeightCalcReset(); //item/overlay height calc reset
+							aHStatesDefault();
+						}
+					
+					window.matchMedia('screen and (max-width: 768px)')
+						.addListener(function(mql2) {
+							if (mql2.matches) {
+							  $elm.unbind('mouseenter mouseleave'); //unbind all hover events
+							  $parentElm.removeClass('dimActive'); //remove class
+							  $parentElm.removeClass('toolTipSlideIn'); //remove class
+							}
+					});
+					
+				  window.matchMedia('screen and (max-width: 480px)')
+					  .addListener(function(mql4) {
+							if (mql4.matches) {							 
+								if ($('div.toolTip').length > 0){ 
+									 $('div.toolTip').remove();
+								}
+							  $elm.hide().fadeIn(300);
+							  createOverlays(); //create, append overlays
+							  itemHeightCalc(); //item/overlay height calc
+							  overlayInView(); //in view - overlays
+							}
+					});
+					if (mql4.matches) {							 
+						if ($('div.toolTip').length > 0){ 
+							 $('div.toolTip').remove();
+						}
+						$elm.hide().fadeIn(300);
+						createOverlays(); //create, append overlays
+						itemHeightCalc(); //item/overlay height calc
+						overlayInView(); //in view - overlays
+					}
+					
 				}
 				enquireMediaQ();
 				
@@ -310,15 +333,17 @@
 				$(window).resize(function() { //run after window resize is complete. Otherwise timer is reset.
 					timerDelay(function(){
 						function enquireMediaQTimed(){ //item height calculations
-							enquire.register("screen and (min-width:480px)", {
-								match : function() {
+							
+							var mql1 = window.matchMedia('screen and (min-width: 480px)');
+							var mql2 = window.matchMedia('screen and (max-width: 480px)');
+							window.matchMedia('screen and (min-width: 480px)')
+								if (mql1.matches) {
 									itemHeightCalcReset(); //item/overlay height calc reset
-								}		
-						 }).register("screen and (max-width:480px)", {
-								match : function() {
+								}
+							window.matchMedia('screen and (max-width: 480px)')
+								if (mql2.matches) {
 									itemHeightCalc(); //item/overlay height calc
 								}
-						 }).listen();
 						}
 						enquireMediaQTimed();						
 					}, 500);
