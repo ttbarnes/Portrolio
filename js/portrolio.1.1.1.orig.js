@@ -93,7 +93,6 @@
 							});
 						}
 						
-						//if media match, do the hover..
 						if(defaultSettings.activeHoverStates.toolTip == true) {
 							$parentElm.addClass('dimActive');
 							$parentElm.addClass('ttipTitleActive');
@@ -268,52 +267,59 @@
 					}
 				}
 				 
-				 
-				/////////
-				///////
-				////
-				//breakpoints
-				////
-				///////
-				/////////
-				function mediaMatchQ() { //matchMedia - make it all dynamic
+				function enquireMediaQ() { //matchMedia - make it all dynamic.
 					
 					var mql1 = window.matchMedia('screen and (min-width: 768px)');
 					var mql2 = window.matchMedia('screen and (max-width: 768px)');
-					var mql3 = window.matchMedia('screen and (min-width: 480px)');
+					//var mql3 = window.matchMedia('screen and (min-width: 480px)');
 					var mql4 = window.matchMedia('screen and (max-width: 480px)');
 					
-					if (mql1.matches) {
-						console.log('mql1 matches - running')
-						itemHeightCalcReset(); //item/overlay height calc reset
-						aHStatesDefault();
-					}
+					window.matchMedia('screen and (min-width: 768px)')
+						.addListener(function(mql1) {
+							if (mql1.matches) {
+								itemHeightCalcReset(); //item/overlay height calc reset
+								aHStatesDefault();
+							}
+						});
+						if (mql1.matches) {
+							itemHeightCalcReset(); //item/overlay height calc reset
+							aHStatesDefault();
+						}
 					
-					if (mql2.matches) {
-						console.log('mql2 matches - running')				
-						$elm.unbind('mouseenter mouseleave'); //unbind all hover events
-						$parentElm.removeClass('dimActive'); //remove class
-						$parentElm.removeClass('toolTipSlideIn'); //remove class
-					}
+					window.matchMedia('screen and (max-width: 768px)')
+						.addListener(function(mql2) {
+							if (mql2.matches) {
+							  $elm.unbind('mouseenter mouseleave'); //unbind all hover events
+							  $parentElm.removeClass('dimActive'); //remove class
+							  $parentElm.removeClass('toolTipSlideIn'); //remove class
+							}
+					});
 					
-					if (mql4.matches) {
-						console.log('mql4 matches - running')									 
-						$('div.toolTip').remove();
+				  window.matchMedia('screen and (max-width: 480px)')
+					  .addListener(function(mql4) {
+							if (mql4.matches) {							 
+								if ($('div.toolTip').length > 0){ 
+									 $('div.toolTip').remove();
+								}
+							  $elm.hide().fadeIn(300);
+							  createOverlays(); //create, append overlays
+							  itemHeightCalc(); //item/overlay height calc
+							  overlayInView(); //in view - overlays
+							}
+					});
+					if (mql4.matches) {							 
+						if ($('div.toolTip').length > 0){ 
+							 $('div.toolTip').remove();
+						}
 						$elm.hide().fadeIn(300);
 						createOverlays(); //create, append overlays
 						itemHeightCalc(); //item/overlay height calc
 						overlayInView(); //in view - overlays
 					}
-			}
-			mediaMatchQ();
-
+					
+				}
+				enquireMediaQ();
 				
-				
-				
-				
-				
-				
-				//temp removed to debug
 				var timerDelay = (function(){ //timer delay, see http://stackoverflow.com/questions/5489946/jquery-how-to-wait-for-the-end-or-resize-event-and-only-then-perform-an-ac
 					var timer = 0;
 					return function(callback, ms){
@@ -324,38 +330,23 @@
 				
 				$(window).resize(function() { //run after window resize is complete. Otherwise timer is reset.
 					timerDelay(function(){
-						function mediaMatchQTimed(){ //item height calculations
+						function enquireMediaQTimed(){ //item height calculations
 							
-							var mql3 = window.matchMedia('screen and (min-width: 480px)');
-							var mql4 = window.matchMedia('screen and (max-width: 480px)');
-							
-								if (mql3.matches) {
-									console.log('mql3 matches - running')									 
+							var mql1 = window.matchMedia('screen and (min-width: 480px)');
+							var mql2 = window.matchMedia('screen and (max-width: 480px)');
+							window.matchMedia('screen and (min-width: 480px)')
+								if (mql1.matches) {
 									itemHeightCalcReset(); //item/overlay height calc reset
 								}
-								
-								if (mql4.matches) {
-									console.log('mql4 matches - running')									 
-																			
-									$('div.toolTip span.title').hide();
-									$('div.toolTip').remove();
-									
-									$elm.hide().fadeIn(300);
-									createOverlays(); //create, append overlays
+							window.matchMedia('screen and (max-width: 480px)')
+								if (mql2.matches) {
 									itemHeightCalc(); //item/overlay height calc
-									overlayInView(); //in view - overlays
-									
 								}
 						}
-						mediaMatchQTimed();						
+						enquireMediaQTimed();						
 					}, 500);
 				});
 				
-				
-				
-				//////////
-				////////
-				//////
 				//loading fails in Opera (mac)
 				/*
 	      var $loading = $('<div id="loading">loading...</div>', {}).insertBefore($parentElm); //create loading element
