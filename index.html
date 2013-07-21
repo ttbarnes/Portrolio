@@ -13,9 +13,8 @@
       <p>A responsive portfolio layout with vertical overlay, dynamic height calculation/resizing, tooltips, colour schemes and more!</p>
     </div>
     <div class="wrapper">
-      <div class="stream" id="streamWrapper">
-        <div class="streamInnerWrapper">
-        
+      <div class="portrolio" id="portrolioWrapper">
+        <div class="portrolioInnerWrapper">
           <div class="item">
             <img src="img/portrolio/main/001.jpg" alt="Thailand" />
             <span class="title">Thailand</span>
@@ -97,26 +96,29 @@
         <p class="last">Photography by <a href="mailto:armand@rozanski.pro" title="armand@rozanski.pro" target="_blank">Armand Rozanski</a> and <a href="http://alexbarnes.me.uk" title="alexbarnes.me.uk" target="_blank">Alexander Barnes</a></p>
       </div>
     </div>
-    
     <div class="footer">
       <h2>&#8249;/div&#8250;</h2>
     </div>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="js/jquery.inview.min.js"></script>
     <script type="text/javascript" src="js/media.match.min.js"></script>
-    <script type="text/javascript" src="js/portrolio.1.1.1.js"></script>
+    <script type="text/javascript" src="js/portrolio.1.1.1.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(e) {
-      $('#streamWrapper').Portrolio({				
-        columnsNo:3, //2, 3, 6
+      //$('#portrolioWrapper').Portrolio();
+      $('#portrolioWrapper').Portrolio({
+        columnsNo:3, //3, 6
 				activeHoverStates: {
 					dim:true,
-					//dimOnly:true,
-					toolTip:true, //tooltip (default has no slide)
-					//toolTipFixedBtm:true, //tooltip fixed at bottom
-					toolTipSlide:true, //tooltip and slide
+					toolTip:true,
+					toolTipSlide:true,
 				},
-        clrScheme: {black:true} //colour schemes: darkBlue lightBlue, darkBlue, black, white, grey
+				//colorScheme:'darkBlue' //colour schemes: darkBlue lightBlue, black, white, grey, none (transparent, white text)
+				//colorScheme:'lightBlue'
+				//colorScheme:'black'
+				//colorScheme:'white'
+				//colorScheme:'grey'
+				//colorScheme:'none'
       });
     });
     </script>
