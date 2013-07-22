@@ -1,0 +1,230 @@
+/********************************
+* Portrolio 1.1.1
+	* A responsive portfolio layout with vertical overlay, dynamic height calculation, tooltips, colour schemes and more!
+	* URL to go here
+	*
+	* Author: Tony Barnes
+	* http://tonybarnes.me
+	* No license or copyright - do what you like
+	*
+	* Last updated: 21/07/2013
+  ********************************
+  plugin demo styles
+**********************************/
+/*reset*/
+h6,
+h5,
+h4,
+h3,
+h2,
+p,
+ol,
+h1,
+td,
+th,
+blockquote,
+textarea,
+input,
+fieldset,
+form,
+pre,
+li,
+ul,
+dd,
+dt,
+dl,
+div,
+body,
+legend {
+  margin: 0;
+  padding: 0;
+}
+legend,
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+var,
+th,
+dfn,
+code,
+cite,
+caption,
+address {
+  font-style: normal;
+}
+var,
+th,
+dfn,
+code,
+cite,
+caption,
+address,
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+  font-weight: 400;
+}
+ul,
+ol {
+  list-style: none;
+}
+th,
+caption {
+  text-align: left;
+}
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+  font-size: 100%;
+}
+q:after,
+q:before {
+  content: '';
+}
+legend,
+img,
+fieldset,
+acronym,
+abbr,
+input[type=image] {
+  border: 0;
+}
+html {
+  background: #181818;
+}
+body {
+  font-family: courier new, arial;
+  color: #353535;
+  background-image: linear-gradient(bottom, #353535 18%, #181818 100%);
+  background-image: -o-linear-gradient(bottom, #353535 18%, #181818 100%);
+  background-image: -moz-linear-gradient(bottom, #353535 18%, #181818 100%);
+  background-image: -webkit-linear-gradient(bottom, #353535 18%, #181818 100%);
+  background-image: -ms-linear-gradient(bottom, #353535 18%, #181818 100%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.18, #353535), color-stop(1, #181818));
+}
+::-moz-selection {
+  background: #141414;
+  color: #CCC;
+  text-shadow: none;
+}
+::selection {
+  background: #141414;
+  color: #CCC;
+  text-shadow: none;
+}
+/*main content*/
+.wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 1000px;
+}
+/*header*/
+.header {
+  margin-bottom: 40px;
+  background: #353535;
+  text-align: center;
+  color: #888;
+}
+.header h1 {
+  padding: 25px 10px;
+  font-size: 2.1em;
+}
+.header h1 span {
+  color: #414141;
+  font-size: 0.8em;
+}
+.header p {
+  display: none;
+  color: #565656;
+  letter-spacing: -2px;
+  font-size: 0.950em;
+  padding: 0 10px 25px 10px;
+}
+.header p span {
+  font-size: 0.9em;
+  color: #555;
+}
+/*bottom info*/
+.bottom {
+  margin: 40px 0 60px 0;
+}
+.bottom * {
+  color: #888;
+}
+.bottom p {
+  margin-bottom: 0.5em;
+}
+.bottom a {
+  font-weight: bold;
+  color: #999;
+}
+.bottom a:hover {
+  text-decoration: none;
+}
+/*footer*/
+.footer {
+  background: #222;
+  min-height: 100px;
+  text-align: center;
+  font-family: courier new, arial;
+  color: #888;
+}
+.footer h2 {
+  padding-top: 35px;
+  font-size: 1.4em;
+}
+@media (max-width: 1000px) {
+  .header {
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 2em;
+    padding: 15px 10px;
+  }
+  .bottom {
+    margin: 20px 20px 35px 20px;
+    text-align: center;
+    font-size: 0.9em;
+  }
+  .bottom p {
+    padding: 0.5em 0 0.8em 0;
+    margin: 0.5em 0;
+    border-bottom: solid 1px #444;
+  }
+  .bottom p.last {
+    border: 0 none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .bottom a:hover {
+    text-decoration: underline;
+  }
+  .footer h2 {
+    font-size: 1.3em;
+  }
+}
+@media (max-width: 480px) {
+  h3 {
+    padding: 1em;
+  }
+  .header {
+    margin-bottom: 0;
+  }
+  .header h1 {
+    font-size: 1.5em;
+  }
+  .bottom {
+    margin: 15px 10px 20px 10px;
+    font-size: 0.8em;
+  }
+  .footer h2 {
+    font-size: 1em;
+  }
+}
