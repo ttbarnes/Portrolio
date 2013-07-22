@@ -1,6 +1,6 @@
 /*
 	* Portrolio 1.1.1
-	* A responsive portfolio layout with vertical overlay, dynamic height calculation/resizing, tooltips, colour schemes and more
+	* A responsive portfolio layout with vertical overlay, dynamic height calculation, tooltips, colour schemes and more!
 	* URL to go here
 	*
 	* Author: Tony Barnes
