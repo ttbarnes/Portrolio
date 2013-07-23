@@ -3,7 +3,7 @@ A responsive portfolio layout with vertical overlay, dynamic height calculation,
 
 !! Please note, this installation has not been tried and tested; in terms of integrating into a pre-built project.
 
-Installation:
+h2.Installation:
 
 1) HTML
 
