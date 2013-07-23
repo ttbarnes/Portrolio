@@ -4,16 +4,16 @@ A responsive portfolio layout with vertical overlay, dynamic height calculation,
 !! Please note, this installation has not been tried and tested; in terms of integrating into a pre-built project.
 
 
-## About:
+## About
 
 Portrolio was primarily built to provide a nice 'vertical showcase reel' style view/layout for mobile devices. This quickly evolved into a portfolio or gallery-type showcase page plugin with tooltips and dimming; supporting large and small scale screens. Features:
 
 - Great for Portfolio-type pages; for example linking to individual project pages.
 - Responsive - 3 main breakpoints
 - Responsive/dynamic height calculation and resizing
-- Responsive Vertical Overlay (scrolling a list of vertical images will always show 3x images, with a fixed overlay. This overlay will show/hide depending on the before() and after() elements from the overall portfolio div wrapper (these elements can be changed in the plugin options)
+- Responsive Vertical Overlay (scrolling a list of vertical images will always show 3x images, with a fixed overlay. This overlay will show/hide depending on the before() and after() elements from the overall portrolio div wrapper (these elements can be changed in the plugin options)
 - Active Hover States with Dimming and ToolTip (also with sliding)
-- Columns handler (2,3,6)
+- Columns handler (3,6)
 - Colour schemes (light/dark blue, black, white, grey, or none)
 
 This is my first jQuery plugin, so it's not perfect! This is a work in progress. 
@@ -22,10 +22,9 @@ I would love to hear about any feedback - suggestions, improvements and bugs. Pl
 
 
 ## Requirments
-
-a) jQuery 2.0: http://jquery.com/download/
-b) Media.match: http://github.com/weblinc/media-match
-c) Inview: http://github.com/protonet/jquery.inview
+- jQuery 2.0: http://jquery.com/download/
+- Media.match: http://github.com/weblinc/media-match
+- Inview: http://github.com/protonet/jquery.inview
 
 
 ## Installation and usage
@@ -93,17 +92,38 @@ We have two stylesheets - portrolio.css and demo.css.
       });
       
       
-## Testing, compatibility:
+## Testing, compatibility
 
-In progress. Initial testing shows the majority of features working in:
+In progress. Initial testing shows the majority of features working in
 
-- asfasdf
-- - asfasdf
-- - asfasdf
-- - asfasdf
-- - asfasdf
+- Mac OS X:
+  - Chrome 27.0.1453.116
+  - Firefox 22.0
+  - Safari 6.0.4
+  - Opera 12.15
 
-## Roadmap:
+- Windows OS 7 64-bit:
+  - Chrome 28.0.1500.72
+  - Firefox 22.0
+  - Safari 5.1.7
+  - Opera 12.15
+  - IE10 10.0.9200
+  - IE9
+  - IE8 and below are not supported.
+
+- Mobile:
+  - iPhone 4 portrait Safari
+  - iPhone 4 landscape Safari
+  - iPhone 5 portrait Safari
+  - iPhone 5 landscape Safari
+  - iPhone 5 portrait Chrome
+  - iPhone 5 landscape Chrome
+
+A full, public testing document is avaliable here:
+- https://docs.google.com/spreadsheet/pub?key=0Ao2Okl00EaifdHdJQmZZWld5eGp0Nlh2b09oZXMwUGc&output=html
+
+
+## Roadmap
 
 - Image popups, thumbnails
 - Cleaner markup
@@ -112,8 +132,7 @@ In progress. Initial testing shows the majority of features working in:
 - More Tooltip options
 
       
-## CONTRIBUTE:
+## Contributions
 
-Contributions are very welcome! Please contact me to discuss.
-
+Contributions are very welcome! Please contact me to discuss: tony@tonybarnes.me
 
