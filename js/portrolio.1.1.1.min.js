@@ -7,7 +7,7 @@
 	* http://tonybarnes.me
 	* No license or copyright - do what you like
 	*
-	* Last updated: 21/07/2013
+	* Last updated: 23/07/2013
 	* Reqruiments: 
 	* 1: jQuery 2.0 (http://jquery.com/download/)
 	* 2: Media.match (https://github.com/weblinc/media-match)
