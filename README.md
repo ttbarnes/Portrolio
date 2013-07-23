@@ -96,7 +96,7 @@ We have two stylesheets - portrolio.css and demo.css.
       
 ## Testing, compatibility
 
-In progress. Initial testing shows the majority of features working in
+In progress. Initial testing shows the majority of features working in the following:
 
 - Mac OS X:
   - Chrome 27.0.1453.116
@@ -111,7 +111,7 @@ In progress. Initial testing shows the majority of features working in
   - Opera 12.15
   - IE10 10.0.9200
   - IE9
-  - IE8 and below are not supported.
+  - (IE8 and below are not supported)
 
 - Mobile:
   - iPhone 4 portrait Safari
@@ -121,7 +121,7 @@ In progress. Initial testing shows the majority of features working in
   - iPhone 5 portrait Chrome
   - iPhone 5 landscape Chrome
 
-A full, public testing document is avaliable here:
+A full testing document is avaliable here:
 - https://docs.google.com/spreadsheet/pub?key=0Ao2Okl00EaifdHdJQmZZWld5eGp0Nlh2b09oZXMwUGc&output=html
 
 
