@@ -1,6 +1,8 @@
 # Portrolio
 A responsive portfolio layout with vertical overlay, dynamic height calculation, tooltips, colour schemes and more!
 
+Demo: http://tonybarnes.me/showcase/code-snippets/portrolio/demo/index.html
+
 !! Please note, this installation has not been tried and tested; in terms of integrating into a pre-built project.
 
 
