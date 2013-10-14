@@ -14,7 +14,7 @@ Portrolio was primarily built to provide a nice 'vertical showcase reel' style v
 - Responsive - 3 main breakpoints
 - Responsive/dynamic height calculation and resizing
 - Responsive Vertical Overlay (scrolling a list of vertical images will always show 3x images, with a fixed overlay. This overlay will show/hide depending on the before() and after() elements from the overall portrolio div wrapper (these elements can be changed in the plugin options)
-- Active Hover States with Dimming and ToolTip (also with sliding)
+- Active Hover States with Dimming, ToolTip and Popup
 - Columns handler (3,6)
 - Colour schemes (light/dark blue, black, white, grey, or none)
 
@@ -34,16 +34,14 @@ I would love to hear about any feedback - suggestions, improvements and bugs. Pl
 ### 1. HTML
 
 a) Portrolio relies on two div container wrappers. Wrap all of your Portrolio items with these 2 divs:
-
-      <div class="portrolio" id="portrolioWrapper">
-        <div class="portrolioInnerWrapper"> 
+<div class="portrolio" id="portrolioWrapper">
+	<div class="portrolioInnerWrapper"> 
 
 b) Each Portrolio item requires a div container with the class name 'item'. For example:
-
-        <div class="item">
-          <img src="img/portrolio/main/001.jpg" alt="Thailand" />
-          <span class="title">Thailand</span>
-        </div>
+<div class="item">
+	<img src="img/portrolio/main/001.jpg" alt="Thailand" />
+	<span class="title">Thailand</span>
+</div>
 
 
 ### 2) CSS
@@ -57,41 +55,39 @@ We have two stylesheets - portrolio.css and demo.css.
 
 ### 3) jQuery/JavaScript 
 
-  a) Integrate all of the required libraries/scripts into your project:
-    - jQuery 2.0: http://jquery.com/download/
-    - Media.match: http://github.com/weblinc/media-match
-    - Inview: http://github.com/protonet/jquery.inview
+a) Integrate all of the required libraries/scripts into your project:
+	- jQuery 2.0: http://jquery.com/download/
+	- Media.match: http://github.com/weblinc/media-match
+	- Inview: http://github.com/protonet/jquery.inview
 
 
-  b) Load the scripts in the following order:
-
-    <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery.inview.min.js"></script>
-    <script type="text/javascript" src="js/media.match.min.js"></script>
-    <script type="text/javascript" src="js/portrolio.1.1.1.min.js"></script>
-
-
-  c) Finally, initialise Portrolio:
-
-      $('#portrolioWrapper').Portrolio();
+b) Load the scripts in the following order:
+	<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.inview.min.js"></script>
+	<script type="text/javascript" src="js/media.match.min.js"></script>
+	<script type="text/javascript" src="js/portrolio.1.1.2.min.js"></script>
 
 
-  d) Alternatively, define your Portrolio options:
+c) Finally, initialise Portrolio:
+$('#portrolioWrapper').Portrolio();
 
-      $('#portrolioWrapper').Portrolio({
-        columnsNo:3, //3, 6
-  			activeHoverStates: {
-					dim:false,
-					toolTip:true,
-					toolTipSlide:false,
-				},
-				//colorScheme:'darkBlue'
-				//colorScheme:'lightBlue'
-				//colorScheme:'black'
-				//colorScheme:'white'
-				//colorScheme:'grey'
-				//colorScheme:'none'
-      });
+
+d) Alternatively, define your Portrolio options:
+$('#portrolioWrapper').Portrolio({
+	columnsNo:3, //3, 6
+	activeHoverStates: {
+		dim:false,
+		toolTip:true,
+		toolTipSlide:false,
+		popup:true
+	},
+	//colorScheme:'darkBlue'
+	//colorScheme:'lightBlue'
+	//colorScheme:'black'
+	//colorScheme:'white'
+	//colorScheme:'grey'
+	//colorScheme:'none'
+});
       
       
 ## Testing, compatibility
