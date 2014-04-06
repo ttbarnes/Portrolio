@@ -1,5 +1,5 @@
 # Portrolio
-A responsive portfolio layout with vertical overlay, dynamic height calculation, tooltips, colour schemes and more!
+jQuery plugin - Responsive portfolio with vertical overlay, dynamic height calculation, tooltips, colour schemes and more!
 
 Demo: http://tonybarnes.me/showcase/code-snippets/portrolio/demo/index.html
 
